@@ -1,0 +1,11 @@
+*/config/development
+*/logs/log-*.php
+*/logs/!index.html
+*/cache/*
+*/cache/!index.html
+*/cache/!.htaccess
+application/config/config.php
+application/config/database.php
+application/config/pusher.php
+scripts/config.js
+assets/img/dinamic/*

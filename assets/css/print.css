@@ -1,0 +1,52 @@
+/*table{width:100%; font-size:1.2em}
+td{height:30px;padding: 0px 0; white-space:pre;}
+.det{text-align: right; font-weight: 600;} .caja{border:1px solid #ccc; border-radius:10px; padding: 10px 0;}
+.anal{font-weight:600; text-decoration:underline;}*/
+@media print{ 
+page{ margin: 0; padding: 0;}
+#Header, #Footer { display: none !important; }
+}
+	body{
+		font-family: arial;
+		font-size: 12px!important;
+		letter-spacing: 1px;
+	}
+	#Header, #Footer { display: none !important; }
+	@page{ margin: 4cm 1.5cm;}
+	table{/*width:100%;*/ font-size:0.9em!important;}
+	td{/*padding: 0px 0;*/ /*white-space:pre;  word-wrap: break-word;*/ }
+	/*table, th, td {
+	    border: 1px solid black;
+	    
+	}*/
+	.anal{font-weight:600;}
+	.det{text-align: right; font-weight: 600;font-size:1.2em}
+	.caja{border:1px solid #9df3fe; border-radius:10px; padding: 10px 0;}
+	
+	table.tableDetalleAnal td.col_examen, table.tableTitulo th.col_examen{
+		width: 40%;
+		vertical-align: top;
+	}
+	table.tableDetalleAnal td.col_resultado, table.tableTitulo th.col_resultado { 
+		width: 30%;
+		vertical-align: top;
+	}
+	table.tableDetalleAnal td.col_valor_normal, table.tableTitulo th.col_valor_normal {
+		width: 20%;
+		vertical-align: top;
+	}
+	table.tableDetalleAnal td.col_metodo, table.tableTitulo th.col_metodo {
+		width: 10%;
+		vertical-align: top;
+	}
+
+	table.tableDetalleAnal td.col_valor_normal{
+		font-size: 0.8em;
+	}
+	table.tableDetalleAnal td.col_metodo{
+		font-size: 0.8em;
+	}
+	
+	
+
+	

@@ -1,0 +1,991 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+
+  <meta charset="utf-8">
+  <title>Sistema de Gestión Hospitario</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Villa Salud">
+    <meta name="author" content="Villa Salud">
+
+    <!-- prochtml:remove:dist -->
+    <!-- <link href="../../assets/less/styles.less" rel="stylesheet/less" media="all">  -->
+    <link href="assets/less/styles.less" rel="stylesheet/less" media="all">
+    <!-- /prochtml -->
+
+    <!-- <link href='http://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400italic,600' rel='stylesheet' type='text/css'> -->
+    <link rel="stylesheet" href="assets/css/fuentes.css">
+    <!-- The following CSS are included as plugins and can be removed if unused--> 
+    <!-- build:css assets/css/vendor.css -->
+    <!-- bower:css -->
+    <link rel="stylesheet" href="bower_components/font-awesome/css/font-awesome.css" />
+<!--     <link rel="stylesheet" href="bower_components/seiyria-bootstrap-slider/dist/css/bootstrap-slider.min.css" /> -->
+    <link rel="stylesheet" href="bower_components/angular-ui-tree/dist/angular-ui-tree.min.css" />
+    <link rel="stylesheet" href="bower_components/bower-jvectormap/jquery-jvectormap-1.2.2.css" />
+<!--     <link rel="stylesheet" href="bower_components/ng-grid/ng-grid.css" /> -->
+    <link rel="stylesheet" href="bower_components/angular-xeditable/dist/css/xeditable.css" />
+    <link rel="stylesheet" href="bower_components/pnotify/pnotify.core.css" />
+    <link rel="stylesheet" href="bower_components/pnotify/pnotify.buttons.css" />
+    <link rel="stylesheet" href="bower_components/pnotify/pnotify.history.css" />
+    <link rel="stylesheet" href="bower_components/nanoscroller/bin/css/nanoscroller.css" />
+    <link rel="stylesheet" href="bower_components/textAngular/src/textAngular.css" />
+    <link rel="stylesheet" href="bower_components/angular-ui-grid/ui-grid.css" />
+    <link rel="stylesheet" href="bower_components/angular-ui-grid/ui.grid.custom.css" />
+    <link rel="stylesheet" href="bower_components/angular-ui-switch/dist/angular-ui-switch.css" />
+<!--     <link rel="stylesheet" href="bower_components/switchery/dist/switchery.css" /> -->
+<!--     <link rel="stylesheet" href="bower_components/fullcalendar/dist/fullcalendar.css" /> -->
+<!--     <link rel="stylesheet" href="bower_components/angular-ui-select/dist/select.css" /> -->
+    <link rel="stylesheet" href="bower_components/animate.css/animate.css" />
+<!--     <link rel="stylesheet" href="bower_components/bootstrap-daterangepicker/daterangepicker-bs3.css" /> -->
+<!--     <link rel="stylesheet" href="bower_components/nvd3/src/nv.d3.css" /> -->
+    <link rel="stylesheet" href="bower_components/skylo/vendor/styles/skylo.css" />
+    <link rel="stylesheet" href="bower_components/themify-icons/themify-icons.css" />
+    <!-- endbower -->
+<!--     <link rel='stylesheet' type='text/css' href='assets/plugins/form-fseditor/fseditor.css' />
+    <link rel='stylesheet' type='text/css' href='assets/plugins/jcrop/css/jquery.Jcrop.min.css' />
+    <link rel="stylesheet" type='text/css' href="assets/plugins/iCheck/skins/all.css" /> -->
+    
+    <link rel="stylesheet" type='text/css' href="assets/plugins/google-code-prettify/prettify.css" />
+    <link rel="stylesheet" type='text/css' href="assets/plugins/angular-block/angular-block-ui.min.css"/>
+    <link rel="stylesheet" type='text/css' href="assets/plugins/angular-hotkeys-master/build/hotkeys.min.css"/>
+    <!-- endbuild -->
+
+    <link rel="stylesheet" type='text/css' href="assets/plugins/angular-multi-select-master/isteven-multi-select.css"/>
+    <link rel="stylesheet" type='text/css' href="assets/fonts/glyphicons/css/glyphicons.css"/>
+
+    <!-- build:css({.tmp,app}) assets/css/main.css -->
+      <link rel="stylesheet" href="assets/css/styles.css">
+    <!-- endbuild -->
+
+
+    <!--[if lt IE 10]>
+        {{ "js/media.match.min.js" | asset_url | script_tag }}
+        {{ "js/respond.min.js" | asset_url | script_tag }}
+        {{ "js/placeholder.min.js" | asset_url | script_tag }}
+    <![endif]-->
+    <link rel="stylesheet" href="assets/css/custom.css">
+    <link type="text/css" href="assets/plugins/iCheck/skins/minimal/blue.css" rel="stylesheet"> 
+    <link type="text/css" href="assets/plugins/iCheck/skins/square/_all.css" rel="stylesheet">
+    <!-- prochtml:remove:dist -->
+    <script type="text/javascript"> less = { env: 'production' }; </script>
+    <script type="text/javascript" src="assets/plugins/misc/less.js"></script>
+    <!-- /prochtml -->
+
+</head>
+
+<body
+  ng-app="themesApp"
+  ng-controller="MainController"
+  ng-class="{
+              'static-header': !getLayoutOption('fixedHeader'),
+              'focused-form': getLayoutOption('fullscreen'),
+              'horizontal-nav': getLayoutOption('layoutHorizontal'),
+              'layout-boxed': getLayoutOption('layoutBoxed'),
+              'sidebar-collapsed': getLayoutOption('leftbarCollapsed') && !getLayoutOption('leftbarShown'),
+              'show-sidebar': getLayoutOption('leftbarShown')
+            }"
+  class="animated-content"
+  ng-click="hideHeaderBar();hideChatBox()"
+  to-top-on-load
+  faux-offcanvas
+  ng-init="getInfoEmpresa(); getValidateSession();"
+>
+    <!-- <ng-include src="'views/layout/header.html'" ng-class="{'navbar-fixed-top': getLayoutOption('fixedHeader')}"></ng-include> -->
+
+<header
+    id="topnav"
+    class="navbar {{getLayoutOption('topNavThemeClass')}}"
+    ng-class="{'navbar-fixed-top': getLayoutOption('fixedHeader'), 'navbar-static-top': !getLayoutOption('fixedHeader')}"
+    role="banner"
+    ng-cloak
+    >
+
+    <div class="logo-area">
+        <span id="trigger-sidebar" class="toolbar-trigger toolbar-icon-bg" ng-click="toggleLeftBar()" ng-show="!getLayoutOption('layoutHorizontal')">
+            <a data-toggle="tooltips" data-placement="right" title="Toggle Sidebar">
+                <span class="icon-bg">
+                    <i class="ti ti-menu"></i>
+                </span>
+            </a>
+        </span>
+
+        <a class="navbar-brand" >Avenxo</a>
+
+        <div class="toolbar-icon-bg hidden-xs" id="toolbar-search" ng-class="{
+          active: getLayoutOption('showSmallSearchBar')
+        }">
+            <div class="input-group">
+                <!-- <span class="input-group-btn"><button class="btn" type="button"><i class="ti ti-search"> ESPECIALIDAD: </i></button></span> -->
+                <!-- <input type="text" class="form-control" placeholder="Search...">  -->
+                <span class="input-group-btn">
+                    <button class="btn" type="button" ng-click="toggleSearchBar($event)"><i class="ti ti-close"></i></button>
+                </span>
+            </div>
+        </div>
+    </div>
+
+    <ul class="nav navbar-nav pull-right toolbar">
+        <li class="toolbar-icon-bg visible-xs-block">
+            <a href="" ng-click="toggleSearchBar($event)"><span class="icon-bg"><i class="ti ti-search"></i></span></a>
+        </li>
+        <li class="toolbar-icon-bg hidden-xs mr-lg" ng-if="fSessionCI.key_group == 'key_sistemas' || fSessionCI.key_group == 'key_admin' || fSessionCI.key_group == 'key_gerencia'" 
+            tooltip-placement="bottom" uib-tooltip="Tipo de cambio" style="font-size: 85%">
+            <div class="text-left mt-sm mb-n text-black block"><strong class="text-info" style="padding-right: 10px">Compra:</strong> <span>S/.{{fSessionCI.tc_compra}}</span></div>
+            <div class="text-left mt-n mb-n text-black "><strong class="text-info" style="padding-right: 20px">Venta: </strong> <span>S/.{{fSessionCI.tc_venta}}</span></div>
+        </li>
+        <li class="toolbar-icon-bg hidden-xs" ng-click="addPageFavorite();" tooltip-placement="bottom" uib-tooltip="Añadir a Favoritos">
+            <a href="" class="toggle-fullscreen"><span class="icon-bg"><i class="ti ti-star"></i></span></i></a>
+        </li>
+        <li class="toolbar-icon-bg hidden-xs" ng-click="reloadPage();" tooltip-placement="bottom" uib-tooltip="Recargar Página">
+            <a href="" class="toggle-fullscreen"><span class="icon-bg"><i class="ti ti-reload"></i></span></i></a>
+        </li>
+        <li class="toolbar-icon-bg hidden-xs demo-options" style="right: auto; position: relative; top: auto; width: auto; background-color: inherit;" tooltip-placement="bottom" uib-tooltip="Cambiar Tema">
+            <a href="" class="demo-options-icon" style="border: inherit; background-color: inherit; left: inherit; position: relative; width:auto;">
+                <span class="icon-bg">
+                    <i class="ti-paint-bucket"></i>
+                </span>
+            </a>
+            <!-- <a href="" class="toggle-fullscreen"><span class="icon-bg"><i class="ti ti-reload"></i></span></i></a> -->
+        </li>
+        <li class="toolbar-icon-bg hidden-xs" toggle-fullscreen tooltip-placement="bottom" uib-tooltip="Pantalla Completa">
+            <a href="" class="toggle-fullscreen"><span class="icon-bg"><i class="ti ti-fullscreen"></i></span></i></a>
+        </li>
+        <li class="dropdown toolbar-icon-bg" ng-if="fSessionCI.key_group == 'key_sistemas' || fSessionCI.key_group == 'key_dir_far'" tooltip-placement="bottom" tooltip="Ver Avisos">
+            <a href="" class="hasnotifications dropdown-toggle" data-toggle='dropdown'>
+                <span class="icon-bg"><i class="ti ti-alert"></i></span>
+                <span ng-show="fSessionCI.listaNotificaciones.contador>0" class="badge badge-deeporange"> {{ fSessionCI.listaNotificaciones.contador }} </span>
+            </a>
+            <div class="dropdown-menu notifications arrow">
+                <div class="topnav-dropdown-header">
+                    <span> Avisos </span>
+                </div>
+                <i class="fa fa-search ml-md"></i><input type="text" name="search" placeholder="" class="input_search ml" ng-model="fBusqueda.notificacion">
+                <div class="scroll-pane">
+                    <ul class="media-list scroll-content">
+                        <li ng-repeat="fila in fSessionCI.listaNotificaciones.datos | filter:fBusqueda" class="media notification-{{fila.clase}}">
+                            <a href="" ng-click="goToUrl('/empleado'); $event.preventDefault();" ng-if="fila.tipo_notif == 'VC' || fila.tipo_notif == 'VFC'">
+                                <div class="media-left">
+                                    <span class="notification-icon"><i class="{{fila.icono}}"></i></span>
+                                </div>
+                                <div class="media-body">
+                                    <h4 class="notification-heading" ng-bind-html="fila.notificacion"></h4>
+                                    <span style="color: white;" class="notification-time label label-{{fila.clase}}"> {{ fila.fecha }} </span>
+                                </div>
+                            </a>
+                            <a href="" ng-click="goToUrl('/medicamentos-por-vencer'); $event.preventDefault();" ng-if="fila.tipo_notif == 'VM'">
+                                <div class="media-left">
+                                    <span class="notification-icon"><i class="{{fila.icono}}"></i></span>
+                                </div>
+                                <div class="media-body">
+                                    <h4 class="notification-heading" ng-bind-html="fila.notificacion"></h4>
+                                    <span style="color: white;" class="notification-time label label-{{fila.clase}}"> {{fila.string}} </span>  <i class="fa fa-clock-o"></i> {{ fila.fecha }}
+                                </div>
+                            </a>
+                            <a href="" ng-click="goToUrl('/control-Stock-Farmacia'); $event.preventDefault();" ng-if="fila.tipo_notif == 'SF'">
+                                <div class="media-left">
+                                    <span class="notification-icon"><i class="{{fila.icono}}"></i></span>
+                                </div>
+                                <div class="media-body">
+                                    <h4 class="notification-heading" ng-bind-html="fila.notificacion"></h4>
+                                    <span style="color: white;" class="notification-time label label-{{fila.clase}}"> {{fila.stock_actual}} Unds.</span>
+                                </div>
+                            </a>
+                        </li>
+                        <li class="media">
+                            <div class="waterMarkEmptyData" style="font-size: 20px;" ng-show="!fSessionCI.listaNotificaciones.datos.length"> No se encontraron notificaciones. </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </li> 
+        <li class="dropdown toolbar-icon-bg" ng-if="fSessionCI.key_group == 'key_rrhh'|| fSessionCI.key_group == 'key_rrhh_asistente'" tooltip-placement="bottom" tooltip="Ver Avisos Colegiaturas ">
+            <a href="" class="hasnotifications dropdown-toggle" data-toggle='dropdown'>
+                <span class="icon-bg"><i class="ti ti-alert"></i></span>
+                <span ng-show="fSessionCI.listaNotificacionesColegiatura.contador>0" class="badge badge-deeporange"> {{ fSessionCI.listaNotificacionesColegiatura.contador }} </span>
+            </a>
+            <div class="dropdown-menu notifications arrow">
+                <div class="topnav-dropdown-header">
+                    <span> Avisos </span>
+                </div>
+                <i class="fa fa-search ml-md"></i><input type="text" name="search" placeholder="" class="input_search ml" ng-model="fBusqueda.notificacion">
+                <div class="scroll-pane">
+                    <ul class="media-list scroll-content">
+                        <li ng-repeat="notCont in fSessionCI.listaNotificacionesColegiatura.datos | filter:fBusqueda" class="media notification-{{notCont.clase}}">
+                            <!-- ng-click="goToUrl('/empleado'); $event.preventDefault();" -->
+                            <a href="" ng-click="btnActualizarNotificacionesColegiatura(notCont);">
+                                <div class="media-left">
+                                    <span class="notification-icon"><i class="{{notCont.icono}}"></i></span>
+                                </div>
+                                <div class="media-body">
+                                    <h4 class="notification-heading" ng-bind-html="notCont.notificacion"></h4>
+                                    <span style="color: white;" class="notification-time label label-{{notCont.clase}}"> {{ notCont.fecha }} </span>
+                                </div>
+                            </a>
+                        </li>
+                        <li class="media">
+                            <div class="waterMarkEmptyData" style="font-size: 20px;" ng-show="!fSessionCI.listaNotificaciones.datos.length"> No se encontraron notificaciones. </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </li>
+        <li class="dropdown toolbar-icon-bg" ng-if="fSessionCI.key_group == 'key_rrhh' || fSessionCI.key_group == 'key_rrhh_asistente'" tooltip-placement="bottom" tooltip="Ver Avisos Contratos ">
+            <a href="" class="hasnotifications dropdown-toggle" data-toggle='dropdown'>
+                <span class="icon-bg"><i class="ti ti-alert"></i></span>
+                <span ng-show="fSessionCI.listaNotificacionesContrato.contador>0" class="badge badge-deeporange"> {{ fSessionCI.listaNotificacionesContrato.contador }} </span>
+            </a>
+            <div class="dropdown-menu notifications arrow">
+                <div class="topnav-dropdown-header">
+                    <span> Avisos </span>
+                </div>
+                <i class="fa fa-search ml-md"></i><input type="text" name="search" placeholder="" class="input_search ml" ng-model="fBusqueda.notificacion">
+                <div class="scroll-pane">
+                    <ul class="media-list scroll-content">
+                        <li ng-repeat="notCont in fSessionCI.listaNotificacionesContrato.datos | filter:fBusqueda" class="media notification-{{notCont.clase}}">
+                            <!-- ng-click="goToUrl('/empleado'); $event.preventDefault();" -->
+                            <a href="" ng-click="btnActualizarNotificacionesContrato(notCont);">
+                                <div class="media-left">
+                                    <span class="notification-icon"><i class="{{notCont.icono}}"></i></span>
+                                </div>
+                                <div class="media-body">
+                                    <h4 class="notification-heading" ng-bind-html="notCont.notificacion"></h4>
+                                    <span style="color: white;" class="notification-time label label-{{notCont.clase}}"> {{ notCont.fecha }} </span>
+                                </div>
+                            </a>
+                        </li>
+                        <li class="media">
+                            <div class="waterMarkEmptyData" style="font-size: 20px;" ng-show="!fSessionCI.listaNotificaciones.datos.length"> No se encontraron notificaciones. </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </li>
+        <li class="dropdown toolbar-icon-bg" tooltip-placement="bottom" tooltip="Ver Notificaciones">
+            <a href="" class="hasnotifications dropdown-toggle" data-toggle='dropdown'>
+                <span class="icon-bg"><i class="ti ti-bell"></i></span>
+                <span ng-show="fSessionCI.listaNotificacionesEventos.contador>0" class="badge badge-deeporange"> {{ fSessionCI.listaNotificacionesEventos.contador }} </span>
+            </a>
+            <div class="dropdown-menu notifications arrow">
+                <div class="topnav-dropdown-header">
+                    <span> Notificaciones </span>
+                </div>
+                <i class="fa fa-search ml-md"></i><input type="text" name="search" placeholder="" class="input_search ml" ng-model="fBusqueda.notificacion">
+                <div class="scroll-pane">
+                    <ul class="media-list scroll-content">
+                        <li ng-repeat="fila in fSessionCI.listaNotificacionesEventos.datos | filter:fBusqueda" 
+                            class="media notification-{{fila.clase}}" >
+                            <a href="" ng-click="viewDetalleNotificacionEvento(fila); $event.preventDefault();" 
+                                style="border: solid 1px #bbb;background: {{fila.color_background}}">
+                                <div class="media-left">
+                                    <span class="notification-icon"><i class="{{fila.icono}}"></i></span>
+                                </div>
+                                <div class="media-body">
+                                    <h4 class="notification-heading" ng-bind-html="fila.notificacion" style="height: 60px;overflow-y: hidden;text-overflow: ellipsis;"></h4>
+                                    <span style="color: white;" class="notification-time label label-{{fila.clase}}"> {{ fila.fecha }} </span>
+                                </div>
+                            </a>                            
+                        </li>
+                        <li class="media">
+                            <div class="waterMarkEmptyData" style="font-size: 20px;" ng-show="!fSessionCI.listaNotificacionesEventos.datos.length"> No se encontraron notificaciones. </div>
+                        </li>
+                    </ul>
+                </div>
+                <!-- <div class="topnav-dropdown-footer">
+                    <a >See all notifications</a>
+                </div> -->
+            </div>
+        </li>
+
+        <li class="dropdown" dropdown >
+            <a href class="dropdown-toggle username" dropdown-toggle><img ng-src="{{ dirImages + 'dinamic/empleado/' + fSessionCI.nombre_foto }}" alt=" {{ fSessionCI.username }} " /></a>
+            <ul class="dropdown-menu animated userinfo arrow">
+                <li><a href="" ng-click="btnCambiarMiClave();"><i class="ti ti-unlock"></i><span>Cambiar mi clave</span></a></li>
+                <li ng-if="fSessionCI.key_group == 'key_sistemas'"><a href="" ng-click="btnTipoCambio();"><i class="ti ti-money"></i><span>Tipo de Cambio</span></a></li>
+                <li><a href="" ng-click="btnLogoutToSystem();"><i class="ti ti-shift-right"></i><span>Cerrar sesión</span></a></li>
+            </ul>
+        </li>
+    </ul>
+</header>
+
+    <div id="wrapper">
+        <nav id="headernav" class="navbar ng-hide {{getLayoutOption('sidebarThemeClass').replace('sidebar', 'navbar')}}" role="navigation" ng-show="getLayoutOption('layoutHorizontal') && !layoutLoading">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
+                    <i class="fa fa-reorder"></i>
+                </button>
+            </div>
+            <div class="collapse navbar-collapse navbar-ex1-collapse" ng-class="{'large-icons-nav': getLayoutOption('layoutHorizontalLargeIcons')}" id="horizontal-navbar">
+                  <ul ng-controller="NavigationController" class="nav navbar-nav">
+                      <li ng-repeat="item in menu"
+                          ng-if="!(item.hideOnHorizontal||item.separator)"
+                          ng-class="{ hasChild: (item.children!==undefined),
+                                        active: item.selected,
+                                          open: (item.children!==undefined) && item.open,
+                               'nav-separator': item.separator==true }"
+                          ng-include="'templates/nav_renderer_horizontal.html'"
+                        ></li>
+                  </ul>
+            </div>
+        </nav>
+        <div id="layout-static">
+            <div class="static-sidebar-wrapper {{getLayoutOption('sidebarThemeClass')}}" ng-show="!layoutLoading">
+                <div class="static-sidebar" role="navigation">
+                    <div class="sidebar">
+                        <div class="widget mb-lg" ng-cloak>
+                            <div class="widget-body">
+                                <div class="userinfo p-md pb-xs">
+                                    <div class="avatar" uib-tooltip="{{ fSessionCI.nombres + ' ' + fSessionCI.apellido_paterno + ' ' + fSessionCI.apellido_materno }}" tooltip-placement="bottom-right">
+                                        <img alt="{{ fSessionCI.username }}" masked-image ng-src="{{ dirImages + 'dinamic/empleado/' + fSessionCI.nombre_foto }}" class="img-responsive img-circle">
+                                    </div>
+                                    <div class="info" style="line-height:1;padding-top:2px;">
+                                        <span class="username"> {{ fSessionCI.username }}  </span>
+                                        <br /> <span class="useremail" style="font-size: 15px;"> {{ fSessionCI.grupo }}</span> <br />
+                                        <span class="useremail" style="font-size: 10px;"> <strong> SEDE </strong> {{ fSessionCI.sede }} </span> <br />
+                                        <span class="useremail" style="font-size: 10px;"> <strong> EMPRESA </strong> {{ fSessionCI.empresa }} </span> 
+                                    </div> 
+                                    <div class="block text-center mt-md" ng-if="mostrarSede">
+                                        <label class="label" style="margin: 0px; font-weight: 100; font-size: 12px; float: left;"> SEDE </label>
+                                        <select class="form-control input-sm" ng-change="onChangeSessionSede(); $event.preventDefault();" 
+                                            ng-model="arrMain.sea" ng-options="item as item.descripcion_sede for item in listaSedeEmpresaAdminSession"> </select>
+                                    </div>
+                                    <div class="block text-center mt-md" ng-if="mostrarEmpresaAdmin">
+                                        <label class="label" style="margin: 0px; font-weight: 100; font-size: 12px; float: left;"> EMPRESA MATRIZ </label>
+                                        <select class="form-control input-sm" ng-change="onChangeSessionSede(); $event.preventDefault();" 
+                                            ng-model="arrMain.sea" ng-options="item as item.descripcion for item in listaEmpresaAdminMatrizSession"> </select>
+                                    </div>
+                                    <div class="block text-center mt-md" ng-if="mostrarSedeEmpresa"> 
+                                        <label class="label" style="margin: 0px; font-weight: 100; font-size: 12px; float: left;"> EMPRESA - SEDE </label>
+                                        <select class="form-control input-sm" ng-change="onChangeSessionSede(); $event.preventDefault();" 
+                                            ng-model="arrMain.sea" ng-options="item as item.descripcion for item in listaSedeEmpresaAdminSession"> </select>
+                                    </div>
+                                    <div class="block text-center mt-md" ng-if="fSessionCI.vista_sede_empresa === '1' || fSessionCI.vista_sede_empresa === '4'"> 
+                                        <label class="label" style="margin: 0px; font-weight: 100; font-size: 12px; float: left;"> ESPECIALIDAD </label> 
+                                        <select ng-change="onChangeSessionEspecialidad(); $event.preventDefault();" class="form-control input-sm"
+                                            ng-model="fSessionCI.idempresamedico" 
+                                            ng-options="item.id as item.descripcion for item in fSessionCI.listaEspecialidadesSession"> </select>
+                                    </div> 
+                                </div>
+                            </div>
+                        </div>
+                        <div class="widget stay-on-collapse">
+                            <nav class="widget-body" ng-controller="NavigationController">
+                                <div class="fav modulo" ng-if="!getLayoutOption('leftbarCollapsed')">
+                                    FAVORITOS
+                                </div>
+                                <div class="fav text-center p-sm" ng-if="getLayoutOption('leftbarCollapsed')">
+                                    FAV.
+                                </div>
+                                <ul class="acc-menu" ng-if="menuFavoritos.length > 0"> 
+                                    <li ng-repeat="item in menuFavoritos" ng-if="!getLayoutOption('leftbarCollapsed')" style="height:25px;">
+                                        <a ng-href="{{item.url}}" class="favorito_lista">
+                                          <i ng-if="item.iconClasses" class="{{item.iconClasses}}"></i><span>{{item.label}}</span>
+                                        </a>
+                                        <a href="" class="btn elimina favorito_eliminar" ng-click="eliminarFavorito(item);" tooltip-placement="right" uib-tooltip="Eliminar Favorito">
+                                            <i class="ti ti-close" style="font-size:9px;text-align:left;" ></i>
+                                        </a>
+                                    </li>
+                                    <li ng-repeat="item in menuFavoritos" ng-if="getLayoutOption('leftbarCollapsed')" style="height:25px;">
+                                        <a ng-href="{{item.url}}">
+                                          <i ng-if="item.iconClasses" class="{{item.iconClasses}}"></i><span>{{item.label}}</span>
+                                        </a>
+                                    </li>
+                                </ul>
+                                <div class="block text-center" ng-if="menuFavoritos.length == 0" style="margin-top: 10px; margin-bottom: -10px;">
+                                    <span>No tiene Favoritos.</span>
+                                </div>
+                                <div>
+                                    <span class="ml-xs">  </span>
+                                </div>
+                                <!-- Inicio -->
+
+                                <ul class="pl acc-menu externo" >
+                                      <li ng-repeat="item in menuExterno"
+                                          ng-class="{ hasChild: (item.children!==undefined),
+                                                    active: item.selected,
+                                                      open: (item.children!==undefined) && item.open,
+                                           'nav-separator': item.separator==true,
+                                            'search-focus': (searchQuery.length>0 && item.selected) }"
+                                        ng-show="!(searchQuery.length && !item.selected) && item.posicion == '1'"
+                                          ng-include="'templates/nav_renderer.html'"
+                                    ></li>
+                                </ul>
+
+                                <!-- unidad de negocio -->
+                                <div class="btn-group col-md-12" ng-if="!getLayoutOption('leftbarCollapsed') && listaUnidadesNegocio.length > 0" style="margin-top:1px;">
+                                    <button type="button" class="btn dropdown-toggle col-md-12 modulo" data-toggle="dropdown">
+                                        <div style="display:inline-block; width:167px">
+                                            <span ng-if="!boolModulo">{{unidadNegocio}}</span>
+                                            <span ng-if="boolModulo">Unidad de Negocio</span>
+                                        </div>
+                                        <div style="display:inline-block;">
+                                            <span class="caret"></span>
+                                        </div>
+                                    </button>
+                                    <ul class="dropdown-menu" role="menu" style="left:0;background-color: rgba(255, 255, 255, 0.9);">
+                                        <li class="text-center" ng-repeat="item in listaUnidadesNegocio" ng-click="selUnidadNegocio(item)"><a href="" >{{item.descripcion}}</a></li>
+                                        
+                                    </ul>
+                                </div>
+                                <div class="btn-group col-md-12" ng-if="getLayoutOption('leftbarCollapsed') && listaUnidadesNegocio.length > 0" style="margin-top:1px;">
+                                    <button type="button" class="btn dropdown-toggle col-md-12" data-toggle="dropdown">
+                                        <span ng-if="!boolModulo">{{unidadnegocio_abrev}}</span>
+                                        <span ng-if="boolModulo">Und.</span>
+                                        <span class="caret"></span>
+                                    </button>
+                                    <ul class="dropdown-menu" role="menu" style="left:0;background-color: rgba(255, 255, 255, 0.9);">
+                                        <li ng-repeat="item in listaUnidadesNegocio" ng-click="selUnidadNegocio(item)"><a href="" >{{item.descripcion}}</a></li>
+                                        
+                                    </ul>
+                                </div>
+
+                                <ul class="acc-menu clear" ng-if="!boolModulo && listaUnidadesNegocio.length > 0">
+                                      <li ng-repeat="item in menuUnidadNegocio"
+                                          ng-class="{ hasChild: (item.children!==undefined),
+                                                    active: item.selected,
+                                                      open: (item.children!==undefined) && item.open,
+                                           'nav-separator': item.separator==true,
+                                            'search-focus': (searchQuery.length>0 && item.selected) }"
+                                        ng-show="!(searchQuery.length && !item.selected)"
+                                          ng-include="'templates/nav_renderer.html'"
+                                    ></li>
+                                </ul>
+                                <!-- modulos -->
+                                <div class="btn-group col-md-12" ng-if="!getLayoutOption('leftbarCollapsed') && listaModulos.length > 0" style="margin-top:1px;">
+                                    <button type="button" class="btn dropdown-toggle col-md-12 modulo" data-toggle="dropdown">
+                                        <div style="display:inline-block; width:167px">
+                                            <span ng-if="boolModulo">{{modulo}}</span>
+                                            <span ng-if="!boolModulo">Módulos</span>
+                                        </div>
+                                        <div style="display:inline-block;">
+                                            <span class="caret"></span>
+                                        </div>
+                                    </button>
+                                    <ul class="dropdown-menu" role="menu" style="left:0;background-color: rgba(255, 255, 255, 0.9);">
+                                        <li class="text-center" ng-repeat="item in listaModulos" ng-click="selModulo(item)"><a href="" >{{item.descripcion}}</a></li>
+                                        
+                                    </ul>
+                                </div>
+                                <div class="btn-group col-md-12" ng-if="getLayoutOption('leftbarCollapsed') && listaModulos.length > 0" style="margin-top:1px;">
+                                    <button type="button" class="btn dropdown-toggle col-md-12" data-toggle="dropdown">
+                                        <span ng-if="boolModulo">{{mod_abrev}}</span>
+                                        <span ng-if="!boolModulo">MOD.</span>
+                                        <span class="caret"></span>
+                                    </button>
+                                    <ul class="dropdown-menu" role="menu" style="left:0;background-color: rgba(255, 255, 255, 0.9);">
+                                        <li ng-repeat="item in listaModulos" ng-click="selModulo(item)"><a href="" >{{item.descripcion}}</a></li>
+                                        
+                                    </ul>
+                                </div>
+                                <ul class="acc-menu clear" ng-if="boolModulo && listaModulos.length > 0">
+                                    <li ng-repeat="item in menu"
+                                          ng-class="{ hasChild: (item.children!==undefined),
+                                                    active: item.selected,
+                                                      open: (item.children!==undefined) && item.open,
+                                           'nav-separator': item.separator==true,
+                                            'search-focus': (searchQuery.length>0 && item.selected) }"
+                                        ng-show="!(searchQuery.length && !item.selected)"
+                                          ng-include="'templates/nav_renderer.html'"> 
+                                    </li>
+                                </ul>
+                                 <!-- menu final -->
+                                <ul class="acc-menu externo clear" style="padding-top:1px;">
+                                    <li ng-repeat="item in menuExterno"
+                                          ng-class="{ hasChild: (item.children!==undefined),
+                                                    active: item.selected,
+                                                      open: (item.children!==undefined) && item.open,
+                                           'nav-separator': item.separator==true,
+                                            'search-focus': (searchQuery.length>0 && item.selected) }"
+                                        ng-show="!(searchQuery.length && !item.selected) && item.posicion == '2'"
+                                          ng-include="'templates/nav_renderer.html'"
+                                    ></li>
+                                </ul>
+                                <div class="block text-left" style="margin-top:200px;">
+                                    <span class="mt-lg mb-lg" >  </span>
+                                </div>
+                            </nav>
+                        </div>
+                    </div>
+                </div> <!-- #sidebar-->
+            </div>
+            <div class="static-content-wrapper">
+                <div class="static-content">
+                    <div class="page-content" ng-view="" class="mainview-animation animated"> </div> <!--wrap -->
+                </div>
+                <footer role="contentinfo" ng-show="!layoutLoading" ng-cloak>
+                    <div class="clearfix">
+                        <ul class="list-unstyled list-inline pull-left">
+                            <li><h6 style="margin: 0;">&copy; 2016 VillaSalud</h6></li>
+                        </ul>
+                        <button class="pull-right btn btn-link btn-xs hidden-print" back-to-top><i class="ti ti-arrow-up"></i></button>
+                    </div>
+                </footer>
+            </div>
+        </div>
+    </div>
+
+<!-- Switcher -->
+    <div class="demo-options content">
+        <!-- <div class="demo-options-icon"><i class="ti-paint-bucket"></i></div> -->
+        <div class="demo-heading text-center pl-n pr-n" style="border-left:1px solid #e0e0e0;">Demo Settings</div>
+
+        <div class="demo-body">
+            <div class="tabular">
+                <div class="tabular-row">
+                    <div class="tabular-cell">Fixed Header</div>
+                    <div class="tabular-cell demo-switches">
+                        <input type="checkbox" ng-model="layoutFixedHeader" class="js-switch switchery-xs" ui-switch="{color: '#8bc34a', secondaryColor: '#e0e0e0', size: 'small'}">
+                    </div>
+                </div>
+                <div class="tabular-row">
+                    <div class="tabular-cell">Boxed Layout</div>
+                    <div class="tabular-cell demo-switches">
+                        <input type="checkbox" ng-model="layoutLayoutBoxed" class="js-switch switchery-xs" ui-switch="{color: '#8bc34a', secondaryColor: '#e0e0e0', size: 'small'}">
+                    </div>
+                </div>
+                <div class="tabular-row">
+                    <div class="tabular-cell">Collapse Leftbar</div>
+                    <div class="tabular-cell demo-switches">
+                        <input type="checkbox" ng-model="layoutLeftbarCollapsed" class="js-switch switchery-xs" ui-switch="{color: '#8bc34a', secondaryColor: '#e0e0e0', size: 'small'}">
+                    </div>
+                </div>
+             </div>
+
+        </div>
+
+        <div class="demo-body">
+            <div class="option-title">Topnav</div>
+            <ul id="demo-header-color" class="demo-color-list">
+                <li><span class="demo-cyan" ng-click="setNavbarClass('navbar-cyan', $event)"></span></li>
+                <li><span class="demo-light-blue" ng-click="setNavbarClass('navbar-light-blue', $event)"></span></li>
+                <li><span class="demo-blue" ng-click="setNavbarClass('navbar-blue', $event)"></span></li>
+                <li><span class="demo-indigo" ng-click="setNavbarClass('navbar-indigo', $event)"></span></li>
+                <li><span class="demo-deep-purple" ng-click="setNavbarClass('navbar-deep-purple', $event)"></span></li>
+                <li><span class="demo-purple" ng-click="setNavbarClass('navbar-purple', $event)"></span></li>
+                <li><span class="demo-pink" ng-click="setNavbarClass('navbar-pink', $event)"></span></li>
+                <li><span class="demo-red" ng-click="setNavbarClass('navbar-red', $event)"></span></li>
+                <li><span class="demo-teal" ng-click="setNavbarClass('navbar-teal', $event)"></span></li>
+                <li><span class="demo-green" ng-click="setNavbarClass('navbar-green', $event)"></span></li>
+                <li><span class="demo-light-green" ng-click="setNavbarClass('navbar-light-green', $event)"></span></li>
+                <li><span class="demo-lime" ng-click="setNavbarClass('navbar-lime', $event)"></span></li>
+                <li><span class="demo-yellow" ng-click="setNavbarClass('navbar-yellow', $event)"></span></li>
+                <li><span class="demo-amber" ng-click="setNavbarClass('navbar-amber', $event)"></span></li>
+                <li><span class="demo-orange" ng-click="setNavbarClass('navbar-orange', $event)"></span></li>
+                <li><span class="demo-deep-orange" ng-click="setNavbarClass('navbar-deep-orange', $event)"></span></li>
+                <li><span class="demo-midnightblue" ng-click="setNavbarClass('navbar-midnightblue', $event)"></span></li>
+                <li><span class="demo-bluegray" ng-click="setNavbarClass('navbar-bluegray', $event)"></span></li>
+                <li><span class="demo-bluegraylight" ng-click="setNavbarClass('navbar-bluegraylight', $event)"></span></li>
+                <li><span class="demo-black" ng-click="setNavbarClass('navbar-black', $event)"></span></li>
+                <li><span class="demo-gray" ng-click="setNavbarClass('navbar-gray', $event)"></span></li>
+                <li><span class="demo-graylight" ng-click="setNavbarClass('navbar-graylight', $event)"></span></li>
+                <li><span class="demo-default" ng-click="setNavbarClass('navbar-default', $event)"></span></li>
+                <li><span class="demo-brown" ng-click="setNavbarClass('navbar-brown', $event)"></span></li>
+            </ul>
+        </div>
+
+        <div class="demo-body">
+            <div class="option-title">Sidebar</div>
+            <ul id="demo-sidebar-color" class="demo-color-list">
+                <li><span class="demo-cyan" ng-click="setSidebarClass('sidebar-cyan', $event)"></span></li>
+                <li><span class="demo-light-blue" ng-click="setSidebarClass('sidebar-light', $event)"></span></li>
+                <li><span class="demo-blue" ng-click="setSidebarClass('sidebar-blue', $event)"></span></li>
+                <li><span class="demo-indigo" ng-click="setSidebarClass('sidebar-indigo', $event)"></span></li>
+                <li><span class="demo-deep-purple" ng-click="setSidebarClass('sidebar-deep-purple', $event)"></span></li>
+                <li><span class="demo-purple" ng-click="setSidebarClass('sidebar-purple', $event)"></span></li>
+                <li><span class="demo-pink" ng-click="setSidebarClass('sidebar-pink', $event)"></span></li>
+                <li><span class="demo-red" ng-click="setSidebarClass('sidebar-red', $event)"></span></li>
+                <li><span class="demo-teal" ng-click="setSidebarClass('sidebar-teal', $event)"></span></li>
+                <li><span class="demo-green" ng-click="setSidebarClass('sidebar-green', $event)"></span></li>
+                <li><span class="demo-light-green" ng-click="setSidebarClass('sidebar-light', $event)"></span></li>
+                <li><span class="demo-lime" ng-click="setSidebarClass('sidebar-lime', $event)"></span></li>
+                <li><span class="demo-yellow" ng-click="setSidebarClass('sidebar-yellow', $event)"></span></li>
+                <li><span class="demo-amber" ng-click="setSidebarClass('sidebar-amber', $event)"></span></li>
+                <li><span class="demo-orange" ng-click="setSidebarClass('sidebar-orange', $event)"></span></li>
+                <li><span class="demo-deep-orange" ng-click="setSidebarClass('sidebar-deep-orange', $event)"></span></li>
+                <li><span class="demo-midnightblue" ng-click="setSidebarClass('sidebar-midnightblue', $event)"></span></li>
+                <li><span class="demo-bluegray" ng-click="setSidebarClass('sidebar-bluegray', $event)"></span></li>
+                <li><span class="demo-bluegraylight" ng-click="setSidebarClass('sidebar-bluegraylight', $event)"></span></li>
+                <li><span class="demo-black" ng-click="setSidebarClass('sidebar-black', $event)"></span></li>
+                <li><span class="demo-gray" ng-click="setSidebarClass('sidebar-gray', $event)"></span></li>
+                <li><span class="demo-graylight" ng-click="setSidebarClass('sidebar-graylight', $event)"></span></li>
+                <li><span class="demo-default" ng-click="setSidebarClass('sidebar-default', $event)"></span></li>
+                <li><span class="demo-brown" ng-click="setSidebarClass('sidebar-brown', $event)"></span></li>
+            </ul>
+        </div>
+    </div>
+    <style>
+        #topnav.navbar-default .navbar-brand,
+        #topnav.navbar-bluegraylight .navbar-brand,
+        #topnav.navbar-graylight .navbar-brand {
+          background: url("{{ dirImages + 'dinamic/empresa/' + fSessionCI.nombre_logo }}") no-repeat left 0 center;
+          background-size: 166px;
+        }
+        #topnav .navbar-brand {
+          background: url("{{ dirImages + 'dinamic/empresa/' + fSessionCI.nombre_logo }}") no-repeat left 0 center;
+          background-size: 166px;
+        }
+    </style>
+<!-- /Switcher -->
+
+    <!--[if lt IE 9]>
+    <script src="bower_components/es5-shim/es5-shim.js"></script>
+    <script src="bower_components/json3/lib/json3.min.js"></script>
+    <![endif]-->
+    <script type='text/javascript' src="scripts/config.js"></script>
+
+    <!--
+        <script type='text/javascript' src='assets/plugins/google.maps.api.js'></script>
+        <script type='text/javascript' src='http://maps.google.com/maps/api/js?sensor=true'></script>
+    -->
+    <!-- build:js scripts/vendor.js -->
+    <!-- bower:js -->
+    <script src="bower_components/modernizr/modernizr.js"></script>
+    <script src="bower_components/jquery/dist/jquery.js"></script>
+    <script src="bower_components/underscore/underscore.js"></script>
+<!--
+    <script src="bower_components/angular/1.4.1/angular.min.js"></script>
+    <script src="bower_components/angular/1.4.1/angular-animate.min.js"></script>
+    <script src="bower_components/angular/1.4.1/angular-locale_es-pe.js"></script>
+    <script src="bower_components/angular/1.4.1/angular-aria.min.js"></script>
+    <script src="bower_components/angular/1.4.1/angular-touch.min.js"></script> -->
+<!-- -->
+    <script src="bower_components/angular/1.5.3/angular.min.js"></script>
+    <script src="bower_components/angular/1.5.3/angular-animate.min.js"></script>
+    <script src="bower_components/angular/1.5.3/angular-locale_es-pe.js"></script>
+    <script src="bower_components/angular/1.5.3/angular-aria.min.js"></script>
+    <script src="bower_components/angular/1.5.3/angular-touch.min.js"></script>
+    <script src="bower_components/angular/1.5.3/angular-sanitize.min.js"></script>
+    <script src="bower_components/angular/1.5.3/angular-cookies.min.js"></script>
+    <script src="bower_components/angular/1.5.3/angular-resource.min.js"></script>
+    <script src="bower_components/angular/1.5.3/angular-route.min.js"></script>
+  <!--
+    <script src="bower_components/angular-resource/angular-resource.js"></script>
+    <script src="bower_components/angular-cookies/angular-cookies.js"></script>
+     <script src="bower_components/angular-sanitize/angular-sanitize.js"></script>
+    <script src="bower_components/angular-route/angular-route.js"></script>
+    <script src="bower_components/bootstrap/dist/js/bootstrap.js"></script>
+-->
+    <script src="bower_components/bootstrap/3.3.6/bootstrap.min.js"></script>
+    <script src="bower_components/seiyria-bootstrap-slider/js/bootstrap-slider.js"></script>
+
+     <script src="bower_components/angular-bootstrap/ui-bootstrap-tpls-0.14.1.min.js"></script>
+     
+    <!-- <script src="bower_components/angular-bootstrap/ui-bootstrap-tpls-1.3.2.min.js"></script>-->
+
+    <script src="bower_components/jquery.ui/ui/jquery.ui.core.js"></script>
+    <script src="bower_components/jquery.ui/ui/jquery.ui.widget.js"></script>
+    <script src="bower_components/jquery.ui/ui/jquery.ui.mouse.js"></script>
+    <script src="bower_components/jquery.ui/ui/jquery.ui.draggable.js"></script>
+    <script src="bower_components/jquery.ui/ui/jquery.ui.sortable.js"></script>
+    <script src="bower_components/jquery.ui/ui/jquery.ui.resizable.js"></script>
+    <script src="bower_components/jquery.easing/js/jquery.easing.js"></script>
+    <script src="bower_components/flot/jquery.flot.js"></script>
+    <script src="bower_components/flot/jquery.flot.stack.js"></script>
+    <script src="bower_components/flot/jquery.flot.pie.js"></script>
+    <script src="bower_components/flot/jquery.flot.resize.js"></script>
+    <script src="bower_components/flot.tooltip/js/jquery.flot.tooltip.js"></script>
+    <script src="bower_components/angular-ui-tree/dist/angular-ui-tree.js"></script>
+    <script src="bower_components/moment/moment.js"></script>
+    <script src="bower_components/bower-jvectormap/jquery-jvectormap-1.2.2.min.js"></script>
+    <script src="bower_components/bower-jvectormap/jquery-jvectormap-world-mill-en.js"></script>
+    <script src="bower_components/ng-grid/build/ng-grid.js"></script>
+    <script src="bower_components/angular-xeditable/dist/js/xeditable.js"></script>
+    <script src="bower_components/iCheck/icheck.min.js"></script>
+    <script src="bower_components/google-code-prettify/src/prettify.js"></script>
+    <script src="bower_components/bootbox.js/bootbox.js"></script>
+    <script src="bower_components/jquery-autosize/jquery.autosize.js"></script>
+    <script src="bower_components/jquery.pulsate/jquery.pulsate.js"></script>
+    <!--
+    <script src="bower_components/gmaps/gmaps.js"></script>
+    
+    <script src="bower_components/jquery.knob/js/jquery.knob.js"></script>
+    <script src="bower_components/jquery.sparkline/index.js"></script>  -->
+    <script src="bower_components/flow.js/dist/flow.js"></script> <!-- subida de archivos -->
+    <script src="bower_components/ng-flow/dist/ng-flow.js"></script> <!-- subida de archivos -->
+    <script src="bower_components/enquire/dist/enquire.js"></script>
+    <script src="bower_components/shufflejs/dist/jquery.shuffle.js"></script>
+    <script src="bower_components/pnotify/pnotify.core.js"></script>
+    <script src="bower_components/pnotify/pnotify.buttons.js"></script>
+    <script src="bower_components/pnotify/pnotify.callbacks.js"></script>
+    <script src="bower_components/pnotify/pnotify.confirm.js"></script>
+    <script src="bower_components/pnotify/pnotify.desktop.js"></script>
+    <script src="bower_components/pnotify/pnotify.history.js"></script>
+    <script src="bower_components/pnotify/pnotify.nonblock.js"></script>
+    <script src="bower_components/nanoscroller/bin/javascripts/jquery.nanoscroller.js"></script>
+    <script src="bower_components/angular-nanoscroller/scrollable.js"></script>
+    <script src="bower_components/rangy/rangy-core.min.js"></script>
+    <script src="bower_components/rangy/rangy-cssclassapplier.min.js"></script>
+    <script src="bower_components/rangy/rangy-selectionsaverestore.min.js"></script>
+    <script src="bower_components/rangy/rangy-serializer.min.js"></script>
+    <!-- WYSIMG EDITOR-->
+    <script src="bower_components/textAngular/src/textAngular.js"></script>
+    <script src="bower_components/textAngular/src/textAngular-sanitize.js"></script>
+    <script src="bower_components/textAngular/src/textAngularSetup.js"></script>
+
+    <script src="assets/plugins/pdfMake/pdfmake.min.js"></script>
+    <script src="assets/plugins/pdfMake/vfs_fonts.js"></script>
+
+    <!-- <script src="bower_components/rangy/rangy-selectionsaverestore.js"></script> -->
+    <script src="bower_components/angular-ui-grid/ui-grid.min.js"></script>
+    <!-- <script src="bower_components/transitionize/dist/transitionize.js"></script>
+    <script src="bower_components/fastclick/lib/fastclick.js"></script>
+    <script src="bower_components/switchery/dist/switchery.js"></script>
+    <script src="bower_components/ng-switchery/src/ng-switchery.js"></script> -->
+    <script src="bower_components/angular-ui-switch/dist/angular-ui-switch.js"></script>
+    <script src="bower_components/angular-ui-select/dist/select.js"></script>
+    <!-- <script src="bower_components/skycons/skycons.js"></script>
+    <script src="bower_components/angular-skycons/angular-skycons.js"></script>
+    <script src="bower_components/bootstrap-daterangepicker/daterangepicker.js"></script>
+    <script src="bower_components/d3/d3.js"></script>
+    <script src="bower_components/nvd3/nv.d3.js"></script>
+    <script src="bower_components/angularjs-nvd3-directives/dist/angularjs-nvd3-directives.js"></script> -->
+    <script src="bower_components/oclazyload/dist/ocLazyLoad.min.js"></script>
+    <script src="bower_components/skylo/vendor/scripts/skylo.js"></script>
+    <script src="bower_components/bootstrap-datepicker/js/bootstrap-datepicker.js"></script>
+    <script src="assets/plugins/highcharts/js/highcharts.js"></script>    
+    <script src="assets/plugins/highcharts/js/themes/dark-green.js"></script>
+    <script src="assets/plugins/highcharts/js/modules/exporting.js"></script>
+    <!-- <script src="bower_components/card/lib/js/jquery.card.js"></script> -->
+    <script src="bower_components/velocity/velocity.js"></script>
+    <script src="bower_components/velocity/velocity.ui.js"></script>
+    <script src="bower_components/jquery.inputmask/dist/jquery.inputmask.bundle.js"></script>
+    <!-- endbower -->
+
+    <script type='text/javascript' src='assets/plugins/form-colorpicker/js/bootstrap-colorpicker.min.js'></script>
+    <script type='text/javascript' src='assets/plugins/form-fseditor/jquery.fseditor-min.js'></script>
+    <script type='text/javascript' src='assets/plugins/form-jasnyupload/fileinput.min.js'></script>
+    <!-- <script type='text/javascript' src='assets/plugins/flot/jquery.flot.spline.js'></script>
+    <script type='text/javascript' src='assets/plugins/flot/jquery.flot.orderBars.js'></script> -->
+    <script type='text/javascript' src='assets/plugins/wijets/wijets.js'></script>
+    <script type='text/javascript' src="assets/plugins/bootstrap-tabdrop/js/bootstrap-tabdrop.js"></script>
+    <script type='text/javascript' src="assets/plugins/angular-block/angular-block-ui.min.js"></script>
+
+    <script type='text/javascript' src="assets/plugins/angular-hotkeys-master/build/hotkeys.min.js"></script>
+    <script type='text/javascript' src="assets/plugins/gm.datepickerMultiSelect.js"></script>
+    <script type='text/javascript' src="assets/plugins/angular-multi-select-master/isteven-multi-select.js"></script>
+
+      <!-- build:js({.tmp,app}) scripts/scripts.js -->
+    <script src="scripts/core/controllers/mainController.js"></script>
+    <script src="scripts/core/controllers/navigationController.js"></script>
+    <script src="scripts/core/controllers/notificationsController.js"></script>
+    <script src="scripts/core/controllers/messagesController.js"></script>
+    <script src="scripts/core/directives/directives.js"></script>
+    <script src="scripts/core/directives/form.js"></script>
+    <script src="scripts/core/directives/ui.js"></script>
+    <script src="scripts/core/modules/templateOverrides.js"></script>
+    <script src="scripts/core/modules/templates.js"></script>
+    <script src="scripts/core/services/services.js"></script>
+    <script src="scripts/core/services/theme.js"></script>
+    <script src="scripts/core/theme.js"></script>
+<!--
+    <script src="scripts/calendar/calendar.js"></script>
+    <script src="scripts/chart/canvas.js"></script>
+    <script src="scripts/chart/flot.js"></script>
+    <script src="scripts/chart/morris.js"></script>
+    <script src="scripts/chart/sparklines.js"></script>
+    <script src="scripts/gallery/gallery.js"></script>
+    <script src="scripts/map/googleMaps.js"></script>
+    <script src="scripts/map/vectorMaps.js"></script>
+-->
+    <script src="assets/plugins/shortcut.js"></script>
+
+    <!-- PRODUCCION -->
+    <script src="scripts/app/login.js"></script>
+    <script src="scripts/app/inicio.js"></script>
+    <script src="scripts/app/rol.js"></script>
+    <script src="scripts/app/grupo.js"></script>
+    <script src="scripts/app/usuario.js"></script>
+    <script src="scripts/app/cargo.js"></script>
+    <script src="scripts/app/empleado.js"></script>
+    <script src="scripts/app/empleadoSalud.js"></script>
+    <script src="scripts/app/tipoVia.js"></script>
+    <script src="scripts/app/tipoZona.js"></script>
+    <script src="scripts/app/ubigeo.js"></script>
+    <script src="scripts/app/zona.js"></script>
+    <script src="scripts/app/cliente.js"></script>
+    <script src="scripts/app/sede.js"></script>
+    <script src="scripts/app/tipoEspecialidad.js"></script>
+    <script src="scripts/app/especialidad.js"></script>
+    <script src="scripts/app/empresa.js"></script>
+    <script src="scripts/app/producto.js"></script>
+    <script src="scripts/app/tipoDocumento.js"></script>
+    <script src="scripts/app/medioPago.js"></script>
+    <script src="scripts/app/precio.js"></script>
+    <script src="scripts/app/empresaAdmin.js"></script>
+    <script src="scripts/app/caja.js"></script>
+    <script src="scripts/app/venta.js"></script>
+    <script src="scripts/app/notaCredito.js"></script>
+    <script src="scripts/app/cajaActual.js"></script>
+    <script src="scripts/app/ventaDescuento.js"></script>
+    <script src="scripts/app/ventaImpresion.js"></script>
+    <script src="scripts/app/liquidacion.js"></script>
+    <script src="scripts/app/areaHospitalaria.js"></script>
+    <script src="scripts/app/atencionMedicaAmb.js"></script>
+    <script src="scripts/app/medicamento.js"></script>
+    <script src="scripts/app/diagnostico.js"></script>
+    <script src="scripts/app/procedimiento.js"></script>
+    <script src="scripts/app/examen.js"></script>
+    <script src="scripts/app/tipoExamen.js"></script>
+    <script src="scripts/app/tipoProducto.js"></script>
+    <script src="scripts/app/odontograma.js"></script>
+    <script src="scripts/app/solicitudProcedimiento.js"></script>
+    <script src="scripts/app/recetaMedica.js"></script>
+    <script src="scripts/app/infoprecios.js"></script>
+    <script src="scripts/app/solicitudExamen.js"></script>
+    <script src="scripts/app/campania.js"></script>
+    <script src="scripts/app/atencionProcedimiento.js"></script>
+    <script src="scripts/app/atencionExamenAux.js"></script>
+    <script src="scripts/app/contingencia.js"></script>
+    <script src="scripts/app/solicitudCitt.js"></script>
+    <script src="scripts/app/afeccion.js"></script>
+    <script src="scripts/app/atencionExamenAux.js"></script>
+    <script src="scripts/app/atencionCITT.js"></script>
+    <script src="scripts/app/empresaCliente.js"></script>
+    <script src="scripts/app/resumenAtencion.js"></script>
+    <script src="scripts/app/historialAtenciones.js"></script>
+    <script src="scripts/app/centralReportes.js"></script>
+    <script src="scripts/app/resumenPacientes.js"></script>
+    <script src="scripts/app/historiasAnteriores.js"></script>
+    <script src="scripts/app/historialVentas.js"></script>
+    <script src="scripts/app/convenio.js"></script>
+    <script src="scripts/app/reporteCentralizado.js"></script>
+    <script src="scripts/app/solicitudes.js"></script>
+    <script src="scripts/app/procedencia.js"></script>
+    <script src="scripts/app/desbloqueoTickets.js"></script>
+    <script src="scripts/app/moduloBienvenida.js"></script>
+    <script src="scripts/app/situacionAcademica.js"></script>
+    <script src="scripts/app/categoriaConsul.js"></script>
+    <script src="scripts/app/ambiente.js"></script>
+    <script src="scripts/app/programacionAmbiente.js"></script>
+    <script src="scripts/app/canal.js"></script>
+    <script src="scripts/app/progMedico.js"></script>
+    <script src="scripts/app/categoriaPersonalSalud.js"></script>
+    <script src="scripts/app/empresaHistorialContrato.js"></script>
+    <script src="scripts/app/historialCitas.js"></script>
+    <script src="scripts/app/controlEvento.js"></script>
+    <script src="scripts/app/gestionNotificacionesProg.js"></script>
+    <script src="scripts/app/programacionesInfo.js"></script>
+    <script src="scripts/app/productosVendidos.js"></script>
+    <!-- MODULO DE LABORATORIO -->
+    <script src="scripts/app/tipoMuestra.js"></script>
+    <script src="scripts/app/unidadesLaboratorio.js"></script>
+    <script src="scripts/app/parasitoHeces.js"></script>
+    <script src="scripts/app/metodo.js"></script>
+    <script src="scripts/app/proveedor.js"></script>
+    <script src="scripts/app/reactivoInsumo.js"></script>
+    <script src="scripts/app/ingresosAlmacen.js"></script>
+    <script src="scripts/app/motivomovimiento.js"></script>
+    <script src="scripts/app/consultaingresosAlmacen.js"></script>
+    <script src="scripts/app/salidasAlmacen.js"></script>
+    <script src="scripts/app/consultasalidasAlmacen.js"></script>
+    <script src="scripts/app/seccion.js"></script>
+    <script src="scripts/app/presentacion.js"></script>
+    <script src="scripts/app/analisis.js"></script>
+    <script src="scripts/app/urocultivo.js"></script>
+    <script src="scripts/app/motivomovimiento.js"></script>
+    <script src="scripts/app/parametro.js"></script>
+    <script src="scripts/app/atencionMuestra.js"></script>
+    <script src="scripts/app/tipoMuestra.js"></script>
+    <script src="scripts/app/generarAnalisis.js"></script>
+    <script src="scripts/app/registrarResultados.js"></script>
+    <script src="scripts/app/reporteResultados.js"></script>
+    <script src="scripts/app/marcalab.js"></script>
+    <script src="scripts/app/ordenesPacientesLaboratorio.js"></script>
+    <script src="scripts/app/resumenAnalisis.js"></script>
+
+    <!-- MODULO DE FARMACIA -->
+    <script src="scripts/app/laboratorio.js"></script>
+    <script src="scripts/app/presentacionFarmacia.js"></script>
+    <script src="scripts/app/medidaConcentracion.js"></script>
+    <script src="scripts/app/viaAdministracion.js"></script>
+    <script src="scripts/app/formaFarmaceutica.js"></script>
+    <script src="scripts/app/condicionVenta.js"></script>
+    <script src="scripts/app/almacenFarm.js"></script>
+    <script src="scripts/app/ventaFarmacia.js"></script>
+    <script src="scripts/app/principioActivo.js"></script>
+    <script src="scripts/app/proveedorFarmacia.js"></script>
+    <script src="scripts/app/tipoProveedorFarmacia.js"></script>
+    <script src="scripts/app/medioPagoFarmacia.js"></script>
+    <script src="scripts/app/medicamentoAlmacen.js"></script>
+    <script src="scripts/app/tipoSubalmacen.js"></script>
+    <script src="scripts/app/liquidacionFarm.js"></script>
+    <script src="scripts/app/notaCreditoFarm.js"></script>
+    <script src="scripts/app/resumenVenta.js"></script>
+    <script src="scripts/app/ventaDescuentoFarm.js"></script>
+    <script src="scripts/app/historialVentasFarm.js"></script>
+    <script src="scripts/app/trasladosFarm.js"></script>
+    <script src="scripts/app/entradasFarm.js"></script>
+    <script src="scripts/app/salidasFarm.js"></script>
+    <script src="scripts/app/aprobacionBajas.js"></script>
+    <script src="scripts/app/solicitudFormula.js"></script>
+    <script src="scripts/app/resumenSolicitudFormula.js"></script>
+    <script src="scripts/app/recepcionFormula.js"></script>
+    <script src="scripts/app/guiaRemision.js"></script>
+
+    <script src="scripts/app/cajaTemporalFarm.js"></script>
+    <script src="scripts/app/pedidoVentaFarmacia.js"></script>
+    <script src="scripts/app/kardexFarm.js"></script>
+    <script src="scripts/app/medicamentosPorVencer.js"></script>
+    <script src="scripts/app/controlStockFarmacia.js"></script>
+    <script src="scripts/app/ventaImpresionFar.js"></script>
+    <script src="scripts/app/motivoTraslado.js"></script>
+    <!-- MODULO DE ASISTENCIA -->
+    <script src="scripts/app/horario.js"></script>
+    <script src="scripts/app/documentoEmpleado.js"></script>
+    <script src="scripts/app/horarioGeneral.js"></script>
+    <script src="scripts/app/horarioEspecial.js"></script>
+    <script src="scripts/app/motivoHorarioEspecial.js"></script>
+    <script src="scripts/app/marcarAsistencia.js"></script>
+
+    <!-- MODULO DE CAPITAL HUMANO -->
+    <script src="scripts/app/pariente.js"></script>
+    <script src="scripts/app/afp.js"></script>
+    <script src="scripts/app/areaEmpresa.js"></script>
+    <script src="scripts/app/profesion.js"></script>
+    <script src="scripts/app/feriado.js"></script>
+    <script src="scripts/app/historialContrato.js"></script>
+    <script src="scripts/app/tipoDocumentoRRHH.js"></script>
+    <script src="scripts/app/aperturaPlanilla.js"></script>
+    <script src="scripts/app/conceptoPlanilla.js"></script>
+    <script src="scripts/app/categoriaConceptoPlanilla.js"></script>
+    <script src="scripts/app/empleadoPlanilla.js"></script>
+    <script src="scripts/app/planillaMaster.js"></script>
+
+    <!-- MODULO DE INTRANET -->
+    <script src="scripts/app/aviso.js"></script>
+    <script src="scripts/app/documentoInterno.js"></script>
+    <!-- MODULO DE SALUD OCUP. -->
+    <script src="scripts/app/trabajadorPerfiles.js"></script>
+    <script src="scripts/app/atencionSaludOcup.js"></script>
+    <!-- MODULO LOGISTICA -->
+    <script src="scripts/app/ordenCompra.js"></script>
+    <script src="scripts/app/seguimientoOrden.js"></script>
+    <script src="scripts/app/areasOrdenCompra.js"></script>
+    <!-- MODULO CONTABLE -->
+    <script src="scripts/app/banco.js"></script>
+    <script src="scripts/app/centroCosto.js"></script>
+    <script src="scripts/app/egreso.js"></script>
+    <script src="scripts/app/operacion.js"></script>
+    <script src="scripts/app/subOperacion.js"></script>
+    <script src="scripts/app/planContable.js"></script>
+    <script src="scripts/app/compra.js"></script>
+    <script src="scripts/app/cajaChica.js"></script>
+    <script src="scripts/app/comprobanteWeb.js"></script>
+    <script src="scripts/app/ctCajaChica.js"></script>
+    <script src="scripts/app/historialCajaChica.js"></script>
+    <script src="scripts/app/asientoContable.js"></script>
+    <script src="scripts/app/cronJob.js"></script>
+
+    <script src="scripts/modules/notFoundController.js"></script>
+    <script src="scripts/modules/errorPageController.js"></script>
+    <script src="scripts/modules/scrollglue.js"></script>
+    <script src="scripts/loadModules.js"></script>
+    <script src="scripts/app.js"></script>
+
+      <!-- endbuild -->
+    <!-- Pusher -->
+    <script src="https://js.pusher.com/4.0/pusher.min.js"></script>     
+    <!-- /Pusher -->
+
+</body>
+</html>
