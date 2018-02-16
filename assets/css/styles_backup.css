@@ -21576,12 +21576,12 @@ ul .panel .panel-heading h2 {
   border-color: #dd191d;
 }
 .panel.panel-danger .panel-heading {
-  color: #1CA2BB;
-  background-color: #1CA2BB;
-  border-color: #005E7C;
+  color: #fde0dc;
+  background-color: #e51c23;
+  border-color: #dd191d;
 }
 .panel.panel-danger .panel-heading h2 {
-  color: #ffffff;
+  color: #fde0dc;
 }
 .panel.panel-danger .panel-heading h2 i.separator {
   background-color: rgba(253, 224, 220, 0.125);
