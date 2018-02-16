@@ -1,0 +1,814 @@
+{
+	"auto_complete":
+	{
+		"selected_items":
+		[
+			[
+				"compo",
+				"components"
+			],
+			[
+				"Chec",
+				"CheckClientCredentials〔class〕"
+			],
+			[
+				"errors",
+				"$errors〔variable〕"
+			],
+			[
+				"is",
+				"isFrontend"
+			],
+			[
+				"for",
+				"foreach\tforeach …"
+			],
+			[
+				"query",
+				"$queryParams〔variable〕"
+			],
+			[
+				"per",
+				"per_page"
+			],
+			[
+				"resu",
+				"$results〔variable〕"
+			],
+			[
+				"fun",
+				"function〔keyword〕"
+			],
+			[
+				"col",
+				"$collection〔variable〕"
+			],
+			[
+				"ima",
+				"imagen"
+			],
+			[
+				"creae",
+				"created"
+			],
+			[
+				"cate",
+				"$categoria〔variable〕"
+			],
+			[
+				"categori",
+				"categorias"
+			],
+			[
+				"produ",
+				"$producto〔variable〕"
+			],
+			[
+				"reques",
+				"$request〔variable〕"
+			],
+			[
+				"prod",
+				"$producto〔variable〕"
+			],
+			[
+				"med",
+				"$medicos〔variable〕"
+			],
+			[
+				"CITAM",
+				"citamedica"
+			],
+			[
+				"de",
+				"deleted"
+			],
+			[
+				"idca",
+				"idcaja"
+			],
+			[
+				"idestad",
+				"idestadodocumento"
+			],
+			[
+				"cic",
+				"cicloatencion"
+			],
+			[
+				"espec",
+				"$especialidade〔variable〕"
+			],
+			[
+				"especia",
+				"especialidades"
+			],
+			[
+				"reque",
+				"$request〔variable〕"
+			],
+			[
+				"error",
+				"errorResponse"
+			],
+			[
+				"Auth",
+				"AuthenticationException"
+			],
+			[
+				"excep",
+				"$exception〔variable〕"
+			],
+			[
+				"Validation",
+				"ValidationException"
+			],
+			[
+				"user",
+				"$user〔variable〕"
+			],
+			[
+				"req",
+				"$request〔variable〕"
+			],
+			[
+				"cla",
+				"class"
+			],
+			[
+				"c",
+				"class\tclass …"
+			],
+			[
+				"USUA",
+				"USUARIO_VERIFICADO"
+			]
+		]
+	},
+	"buffers":
+	[
+		{
+			"contents": "Searching 3492 files for \"sistemahospitalario\"\n\n0 matches",
+			"settings":
+			{
+				"buffer_size": 57,
+				"line_ending": "Windows",
+				"name": "Find Results",
+				"scratch": true
+			}
+		},
+		{
+			"file": "application/config/config.php",
+			"settings":
+			{
+				"buffer_size": 17869,
+				"encoding": "UTF-8",
+				"line_ending": "Unix"
+			}
+		}
+	],
+	"build_system": "",
+	"build_system_choices":
+	[
+	],
+	"build_varint": "",
+	"command_palette":
+	{
+		"height": 137.0,
+		"last_filter": "Install pa",
+		"selected_items":
+		[
+			[
+				"Install pa",
+				"Package Control: Install Package"
+			]
+		],
+		"width": 540.0
+	},
+	"console":
+	{
+		"height": 130.0,
+		"history":
+		[
+			"import urllib.request,os,hashlib; h = '6f4c264a24d933ce70df5dedcf1dcaee' + 'ebe013ee18cced0ef93d5f746d80ef60'; pf = 'Package Control.sublime-package'; ipp = sublime.installed_packages_path(); urllib.request.install_opener( urllib.request.build_opener( urllib.request.ProxyHandler()) ); by = urllib.request.urlopen( 'http://packagecontrol.io/' + pf.replace(' ', '%20')).read(); dh = hashlib.sha256(by).hexdigest(); print('Error validating download (got %s instead of %s), please try manual install' % (dh, h)) if dh != h else open(os.path.join( ipp, pf), 'wb' ).write(by)"
+		]
+	},
+	"distraction_free":
+	{
+		"menu_visible": true,
+		"show_minimap": false,
+		"show_open_files": false,
+		"show_tabs": false,
+		"side_bar_visible": false,
+		"status_bar_visible": false
+	},
+	"expanded_folders":
+	[
+		"/C/wamp64/www/sys_clinico",
+		"/C/wamp64/www/sys_clinico/application",
+		"/C/wamp64/www/sys_clinico/application/config"
+	],
+	"file_history":
+	[
+		"/C/wamp64/www/sys_clinico/application/third_party/mpdf60/ttfontdata/dejavusanscondensed.mtx.php",
+		"/C/wamp64/www/sys_clinico/application/config/config.php",
+		"/C/wamp64/www/sys_clinico/application/third_party/mpdf60/ttfontdata/dejavusanscondensedB.mtx.php",
+		"/C/wamp64/www/sys_clinico/application/third_party/mpdf60/ttfontdata/dejavuserif.mtx.php",
+		"/C/wamp64/www/sys_clinico/application/third_party/mpdf60/ttfontdata/dejavuserifB.mtx.php",
+		"/C/wamp64/www/sys_clinico/application/third_party/mpdf60/ttfontdata/dejavuserifcondensed.mtx.php",
+		"/C/wamp64/www/sys_clinico/application/third_party/mpdf60/ttfontdata/dejavuserifcondensedB.mtx.php",
+		"/C/wamp64/www/sys_clinico/application/third_party/mpdf60/ttfontdata/freesans.mtx.php",
+		"/C/wamp64/www/sys_clinico/application/third_party/mpdf60/ttfontdata/freesansB.mtx.php",
+		"/C/wamp64/www/sys_clinico/application/third_party/mpdf60/ttfontdata/garuda.mtx.php",
+		"/C/wamp64/www/sys_clinico/application/third_party/mpdf60/ttfontdata/garudaB.mtx.php",
+		"/C/wamp64/www/sys_clinico/scripts/config.js",
+		"/C/wamp64/www/sys_clinico/.gitignore",
+		"/C/wamp64/www/sys_clinico/application/config/database.php",
+		"/C/xampp/htdocs/apiclinicanet/resources/views/layouts/app.blade.php",
+		"/C/xampp/htdocs/apiclinicanet/resources/assets/js/app.js",
+		"/C/xampp/htdocs/apiclinicanet/app/Providers/AuthServiceProvider.php",
+		"/C/xampp/htdocs/apiclinicanet/routes/web.php",
+		"/C/xampp/htdocs/apiclinicanet/app/Http/Controllers/HomeController.php",
+		"/C/xampp/htdocs/apiclinicanet/resources/views/home/personal-clients.blade.php",
+		"/C/xampp/htdocs/apiclinicanet/resources/views/home/authorized-clients.blade.php",
+		"/C/xampp/htdocs/apiclinicanet/resources/views/home/personal-tokens.blade.php",
+		"/C/xampp/htdocs/apiclinicanet/resources/assets/js/components/passport/PersonalAccessTokens.vue",
+		"/C/xampp/htdocs/apiclinicanet/app/Http/Kernel.php",
+		"/C/xampp/htdocs/apiclinicanet/routes/api.php",
+		"/C/xampp/htdocs/apiclinicanet/vendor/laravel/passport/src/Http/Controllers/AccessTokenController.php",
+		"/C/xampp/htdocs/apiclinicanet/vendor/laravel/framework/src/Illuminate/Auth/Authenticatable.php",
+		"/C/xampp/htdocs/apiclinicanet/vendor/laravel/passport/src/Bridge/UserRepository.php",
+		"/C/xampp/htdocs/apiclinicanet/vendor/psr/http-message/src/ServerRequestInterface.php",
+		"/C/xampp/htdocs/apiclinicanet/app/Exceptions/Handler.php",
+		"/C/xampp/htdocs/apiclinicanet/app/Http/Controllers/Producto/ProductoController.php",
+		"/C/xampp/htdocs/apiclinicanet/app/Models/User.php",
+		"/C/xampp/htdocs/apiclinicanet/config/auth.php",
+		"/C/xampp/htdocs/apiclinicanet/vendor/laravel/passport/src/HasApiTokens.php",
+		"/C/xampp/htdocs/apiclinicanet/app/Http/Controllers/User/UserController.php",
+		"/C/xampp/htdocs/apiclinicanet/app/Http/Controllers/Producto/ProductoCategoriaController.php",
+		"/C/xampp/htdocs/apiclinicanet/app/Http/Controllers/ApiController.php",
+		"/C/xampp/htdocs/apiclinicanet/app/Http/Controllers/Medico/MedicoController.php",
+		"/C/xampp/htdocs/apiclinicanet/resources/views/welcome.blade.php",
+		"/C/xampp/htdocs/apiclinicanet/config/app.php",
+		"/C/xampp/htdocs/apiclinicanet/app/Providers/RouteServiceProvider.php",
+		"/C/xampp/htdocs/apiclinicanet/resources/views/auth/login.blade.php",
+		"/C/xampp/htdocs/apiclinicanet/vendor/laravel/framework/src/Illuminate/Auth/EloquentUserProvider.php",
+		"/C/xampp/htdocs/apiclinicanet/database/migrations/2014_10_12_000000_create_users_table.php",
+		"/C/xampp/htdocs/apiclinicanet/storage/logs/laravel.log",
+		"/C/xampp/htdocs/apiclinicanet/vendor/laravel/framework/src/Illuminate/Foundation/Exceptions/views/layout.blade.php",
+		"/C/xampp/htdocs/apiclinicanet/app/Models/Producto.php",
+		"/C/xampp/htdocs/apiclinicanet/app/Traits/ApiResponser.php",
+		"/C/xampp/htdocs/apiclinicanet/app/Http/Middleware/TransformInput.php",
+		"/C/xampp/htdocs/apiclinicanet/vendor/laravel/framework/src/Illuminate/Routing/Router.php",
+		"/C/xampp/htdocs/apiclinicanet/app/Http/Controllers/Medico/MedicoClienteController.php",
+		"/C/xampp/htdocs/apiclinicanet/app/Models/Anexo.php",
+		"/C/xampp/htdocs/apiclinicanet/app/Models/Timbrado.php",
+		"/C/xampp/htdocs/apiclinicanet/app/Models/Llamadadet.php",
+		"/C/xampp/htdocs/apiclinicanet/vendor/laravel/framework/src/Illuminate/Routing/Middleware/ThrottleRequests.php",
+		"/C/xampp/htdocs/apiclinicanet/app/Scopes/UserScope.php",
+		"/C/xampp/htdocs/apiclinicanet/app/Http/Controllers/Categoria/CategoriaController.php",
+		"/C/xampp/htdocs/apiclinicanet/app/Console/Kernel.php",
+		"/C/xampp/htdocs/apiclinicanet/app/Models/Citamedica.php",
+		"/C/xampp/htdocs/apiclinicanet/app/Http/Controllers/Cliente/ClienteMedicoCitamedicaController.php",
+		"/C/xampp/htdocs/apiclinicanet/config/filesystems.php",
+		"/C/xampp/htdocs/apiclinicanet/.env",
+		"/C/xampp/htdocs/apiclinicanet/inserINTO.sql",
+		"/C/xampp/htdocs/apiclinicanet/app/Http/Middleware/SignatureMiddleware.php",
+		"/C/xampp/htdocs/apiclinicanet/vendor/laravel/framework/src/Illuminate/Foundation/Http/Middleware/ConvertEmptyStringsToNull.php",
+		"/C/xampp/htdocs/apiclinicanet/public/img/.gitignore",
+		"/C/xampp/htdocs/apiclinicanet/app/Models/Sede.php",
+		"/C/xampp/htdocs/apiclinicanet/app/Http/Controllers/Citamedica/CitamedicaClienteMedicoController.php",
+		"/C/xampp/htdocs/apiclinicanet/app/Models/Ventadet.php",
+		"/C/xampp/htdocs/apiclinicanet/app/Http/Controllers/Cliente/ClienteCitamedicaController.php",
+		"/C/xampp/htdocs/apiclinicanet/composer.json",
+		"/C/xampp/htdocs/apiclinicanet/vendor/laravel/framework/src/Illuminate/Http/Concerns/InteractsWithInput.php",
+		"/C/xampp/htdocs/apiclinicanet/app/Models/Tratamiento.php",
+		"/C/xampp/htdocs/apiclinicanet/app/Models/Cliente.php",
+		"/C/xampp/htdocs/apiclinicanet/app/Http/Controllers/Cliente/ClienteProductoController.php",
+		"/C/xampp/htdocs/apiclinicanet/app/Models/Medico.php",
+		"/C/xampp/htdocs/apiclinicanet/app/Models/Categoria.php",
+		"/C/xampp/htdocs/apiclinicanet/app/Http/Controllers/Categoria/CategoriaTratamientoController.php",
+		"/C/xampp/htdocs/apiclinicanet/app/Http/Controllers/Categoria/CategoriaProductoController.php",
+		"/C/xampp/htdocs/apiclinicanet/app/Scopes/TerapeutaScope.php",
+		"/C/xampp/htdocs/apiclinicanet/app/Http/Controllers/Ventadet/VentadetCategoriaController.php",
+		"/C/xampp/htdocs/apiclinicanet/app/Scopes/MedicoScope.php",
+		"/C/xampp/htdocs/apiclinicanet/app/Scopes/PersonalScope.php",
+		"/C/xampp/htdocs/apiclinicanet/app/Scopes/ProveedorScope.php",
+		"/C/xampp/htdocs/apiclinicanet/app/Scopes/ClienteScope.php",
+		"/C/xampp/htdocs/apiclinicanet/app/Http/Controllers/Ventadet/VentadetController.php",
+		"/C/xampp/htdocs/apiclinicanet/app/Models/Perfil.php",
+		"/C/xampp/htdocs/apiclinicanet/app/Models/Modulo.php",
+		"/C/xampp/htdocs/apiclinicanet/app/Models/Empresa.php",
+		"/C/xampp/htdocs/apiclinicanet/vendor/composer/ClassLoader.php",
+		"/C/xampp/htdocs/apiclinicanet/app/Http/Controllers/Especialidad/EspecialidadController.php",
+		"/C/xampp/htdocs/apiclinicanet/app/Scopes/EspecialidadScope.php",
+		"/C/xampp/htdocs/apiclinicanet/app/Models/Especialidad.php",
+		"/C/xampp/htdocs/apiclinicanet/app/Http/Controllers/User/UserPerfilController.php",
+		"/C/xampp/htdocs/apiclinicanet/vendor/symfony/routing/Route.php",
+		"/C/xampp/htdocs/apiclinicanet/app/Http/Controllers/Controller.php",
+		"/C/xampp/htdocs/apiclinicanet/vendor/laravel/framework/src/Illuminate/Foundation/Exceptions/Handler.php",
+		"/C/xampp/htdocs/apiclinicanet/app/Http/Controllers/Historia/HistoriaController.php",
+		"/C/xampp/htdocs/apiclinicanet/app/Http/Controllers/Sede/SedeController.php",
+		"/C/xampp/htdocs/apiclinicanet/app/Http/Controllers/Tarifa/TarifaController.php",
+		"/C/xampp/htdocs/apiclinicanet/config/constants.php",
+		"/C/xampp/htdocs/apiclinicanet/vendor/laravel/framework/src/Illuminate/Support/Facades/Config.php",
+		"/C/xampp/htdocs/apiclinicanet/app/config/constants.php",
+		"/C/xampp/htdocs/apiclinicanet/app/Providers/AppServiceProvider.php",
+		"/C/xampp/htdocs/apiclinicanet/app/Models/Consultorio.php",
+		"/C/xampp/htdocs/apiclinicanet/app/Models/Estado.php",
+		"/C/xampp/htdocs/apiclinicanet/app/Models/Examen.php",
+		"/C/xampp/htdocs/apiclinicanet/app/Models/Factura.php",
+		"/C/xampp/htdocs/apiclinicanet/app/Models/Historia.php",
+		"/C/xampp/htdocs/apiclinicanet/app/Models/Horario.php",
+		"/C/xampp/htdocs/apiclinicanet/app/Models/Ip.php",
+		"/C/xampp/htdocs/apiclinicanet/app/Models/Llamada.php",
+		"/C/xampp/htdocs/apiclinicanet/app/Models/Logacceso.php",
+		"/C/xampp/htdocs/apiclinicanet/app/Models/Mediopago.php",
+		"/C/xampp/htdocs/apiclinicanet/app/Models/Meta.php",
+		"/C/xampp/htdocs/apiclinicanet/app/Models/Modelo.php",
+		"/C/xampp/htdocs/apiclinicanet/app/Models/Modelodet.php",
+		"/C/xampp/htdocs/apiclinicanet/app/Models/Moneda.php",
+		"/C/xampp/htdocs/apiclinicanet/app/Models/Notacredito.php",
+		"/C/xampp/htdocs/apiclinicanet/app/Models/Orden.php",
+		"/C/xampp/htdocs/apiclinicanet/app/Models/Ordendet.php",
+		"/C/xampp/htdocs/apiclinicanet/app/Models/Pago.php",
+		"/C/xampp/htdocs/apiclinicanet/app/Models/Referencia.php",
+		"/C/xampp/htdocs/apiclinicanet/app/Models/Reservacion.php",
+		"/C/xampp/htdocs/apiclinicanet/app/Models/Saldo.php",
+		"/C/xampp/htdocs/apiclinicanet/app/Models/Seguro.php",
+		"/C/xampp/htdocs/apiclinicanet/app/Models/Seguroplan.php",
+		"/C/xampp/htdocs/apiclinicanet/app/Models/Servicio.php"
+	],
+	"find":
+	{
+		"height": 35.0
+	},
+	"find_in_files":
+	{
+		"height": 125.0,
+		"where_history":
+		[
+			""
+		]
+	},
+	"find_state":
+	{
+		"case_sensitive": false,
+		"find_history":
+		[
+			"sistemahospitalario"
+		],
+		"highlight": true,
+		"in_selection": false,
+		"preserve_case": false,
+		"regex": false,
+		"replace_history":
+		[
+			"sys_clinico"
+		],
+		"reverse": false,
+		"show_context": true,
+		"use_buffer2": true,
+		"whole_word": false,
+		"wrap": true
+	},
+	"groups":
+	[
+		{
+			"selected": 1,
+			"sheets":
+			[
+				{
+					"buffer": 0,
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 57,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								0,
+								0
+							]
+						],
+						"settings":
+						{
+							"default_dir": "C:\\wamp64\\www\\sys_clinico",
+							"detect_indentation": false,
+							"line_numbers": false,
+							"output_tag": 1,
+							"result_base_dir": "",
+							"result_file_regex": "^([^ \t].*):$",
+							"result_line_regex": "^ +([0-9]+):",
+							"scroll_past_end": true,
+							"syntax": "Packages/Default/Find Results.hidden-tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 1,
+					"type": "text"
+				},
+				{
+					"buffer": 1,
+					"file": "application/config/config.php",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 17869,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								813,
+								813
+							]
+						],
+						"settings":
+						{
+							"auto_complete": false,
+							"syntax": "Packages/PHP/PHP.sublime-syntax"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 0,
+					"type": "text"
+				}
+			]
+		}
+	],
+	"incremental_find":
+	{
+		"height": 35.0
+	},
+	"input":
+	{
+		"height": 47.0
+	},
+	"layout":
+	{
+		"cells":
+		[
+			[
+				0,
+				0,
+				1,
+				1
+			]
+		],
+		"cols":
+		[
+			0.0,
+			1.0
+		],
+		"rows":
+		[
+			0.0,
+			1.0
+		]
+	},
+	"menu_visible": true,
+	"output.find_results":
+	{
+		"height": 0.0
+	},
+	"pinned_build_system": "",
+	"project": "sysclinico.sublime-project",
+	"replace":
+	{
+		"height": 88.0
+	},
+	"save_all_on_build": true,
+	"select_file":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+			[
+				"app.bla",
+				"resources\\views\\layouts\\app.blade.php"
+			],
+			[
+				"web.",
+				"routes\\web.php"
+			],
+			[
+				"homecontr",
+				"app\\Http\\Controllers\\HomeController.php"
+			],
+			[
+				"usercontr",
+				"app\\Http\\Controllers\\User\\UserController.php"
+			],
+			[
+				"user",
+				"app\\Models\\User.php"
+			],
+			[
+				"usercon",
+				"app\\Http\\Controllers\\User\\UserController.php"
+			],
+			[
+				"userc",
+				"app\\Http\\Controllers\\User\\UserController.php"
+			],
+			[
+				"accesstokencontroller",
+				"vendor\\laravel\\passport\\src\\Http\\Controllers\\AccessTokenController.php"
+			],
+			[
+				"productcontr",
+				"app\\Http\\Controllers\\Producto\\ProductoController.php"
+			],
+			[
+				"medico",
+				"app\\Http\\Controllers\\Medico\\MedicoController.php"
+			],
+			[
+				"apicontr",
+				"app\\Http\\Controllers\\ApiController.php"
+			],
+			[
+				"hander",
+				"app\\Exceptions\\Handler.php"
+			],
+			[
+				"api",
+				"routes\\api.php"
+			],
+			[
+				"apicont",
+				"app\\Http\\Controllers\\ApiController.php"
+			],
+			[
+				"prod",
+				"app\\Http\\Controllers\\Producto\\ProductoController.php"
+			],
+			[
+				"productoco",
+				"app\\Http\\Controllers\\Producto\\ProductoController.php"
+			],
+			[
+				"kernel",
+				"app\\Http\\Kernel.php"
+			],
+			[
+				"authser",
+				"app\\Providers\\AuthServiceProvider.php"
+			],
+			[
+				"app.",
+				"config\\app.php"
+			],
+			[
+				"login",
+				"resources\\views\\auth\\login.blade.php"
+			],
+			[
+				"eloquentuserprovider",
+				"vendor\\laravel\\framework\\src\\Illuminate\\Auth\\EloquentUserProvider.php"
+			],
+			[
+				"laravel",
+				"storage\\logs\\laravel.log"
+			],
+			[
+				"handl",
+				"app\\Exceptions\\Handler.php"
+			],
+			[
+				"layout",
+				"vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Exceptions\\views\\layout.blade.php"
+			],
+			[
+				"web",
+				"routes\\web.php"
+			],
+			[
+				"illuminaterouter",
+				"vendor\\laravel\\framework\\src\\Illuminate\\Routing\\Router.php"
+			],
+			[
+				"transfor",
+				"app\\Http\\Middleware\\TransformInput.php"
+			],
+			[
+				"apicon",
+				"app\\Http\\Controllers\\ApiController.php"
+			],
+			[
+				"apires",
+				"app\\Traits\\ApiResponser.php"
+			],
+			[
+				"api.",
+				"routes\\api.php"
+			],
+			[
+				"users",
+				"app\\Scopes\\UserScope.php"
+			],
+			[
+				"apirespo",
+				"app\\Traits\\ApiResponser.php"
+			],
+			[
+				"categoria",
+				"app\\Http\\Controllers\\Categoria\\CategoriaController.php"
+			],
+			[
+				"categ",
+				"app\\Http\\Controllers\\Categoria\\CategoriaController.php"
+			],
+			[
+				"productocon",
+				"app\\Http\\Controllers\\Producto\\ProductoController.php"
+			],
+			[
+				"producto",
+				"app\\Models\\Producto.php"
+			],
+			[
+				"app.php",
+				"config\\app.php"
+			],
+			[
+				"throttlere",
+				"vendor\\laravel\\framework\\src\\Illuminate\\Routing\\Middleware\\ThrottleRequests.php"
+			],
+			[
+				"llamadadet",
+				"app\\Models\\Llamadadet.php"
+			],
+			[
+				"timbrado",
+				"app\\Models\\Timbrado.php"
+			],
+			[
+				"produc",
+				"app\\Models\\Producto.php"
+			],
+			[
+				"produco",
+				"app\\Http\\Controllers\\Producto\\ProductoController.php"
+			],
+			[
+				"citame",
+				"app\\Models\\Citamedica.php"
+			],
+			[
+				"sede",
+				"app\\Models\\Sede.php"
+			],
+			[
+				"inser",
+				"inserINTO.sql"
+			],
+			[
+				"productoc",
+				"app\\Http\\Controllers\\Producto\\ProductoController.php"
+			],
+			[
+				"pro",
+				"app\\Models\\Producto.php"
+			],
+			[
+				"ventadet",
+				"app\\Models\\Ventadet.php"
+			],
+			[
+				"insert",
+				"inserINTO.sql"
+			],
+			[
+				"compo",
+				"composer.json"
+			],
+			[
+				"compos",
+				"composer.json"
+			],
+			[
+				"interactswithin",
+				"vendor\\laravel\\framework\\src\\Illuminate\\Http\\Concerns\\InteractsWithInput.php"
+			],
+			[
+				"product",
+				"app\\Models\\Producto.php"
+			],
+			[
+				"citamed",
+				"app\\Models\\Citamedica.php"
+			],
+			[
+				"medic",
+				"app\\Models\\Medico.php"
+			],
+			[
+				"medicocl",
+				"app\\Http\\Controllers\\Medico\\MedicoClienteController.php"
+			],
+			[
+				"categoriapro",
+				"app\\Http\\Controllers\\Categoria\\CategoriaProductoController.php"
+			],
+			[
+				"clienteprod",
+				"app\\Http\\Controllers\\Cliente\\ClienteProductoController.php"
+			],
+			[
+				"cliente",
+				"app\\Models\\Cliente.php"
+			],
+			[
+				"produ",
+				"app\\Models\\Producto.php"
+			],
+			[
+				"trata",
+				"app\\Models\\Tratamiento.php"
+			],
+			[
+				"citamedicacon",
+				"app\\Http\\Controllers\\Cliente\\ClienteCitamedicaController.php"
+			],
+			[
+				"clientecitamedicacontroller",
+				"app\\Http\\Controllers\\Cliente\\ClienteCitamedicaController.php"
+			],
+			[
+				"clientecontr",
+				"app\\Http\\Controllers\\Cliente\\ClienteCitamedicaController.php"
+			],
+			[
+				"med",
+				"app\\Models\\Medico.php"
+			],
+			[
+				"perfil",
+				"app\\Models\\Perfil.php"
+			],
+			[
+				"classloader.p",
+				"vendor\\composer\\ClassLoader.php"
+			],
+			[
+				"route",
+				"vendor\\symfony\\routing\\Route.php"
+			],
+			[
+				"",
+				"app\\Models\\User.php"
+			],
+			[
+				"usercontro",
+				"app\\Http\\Controllers\\User\\UserController.php"
+			],
+			[
+				"modu",
+				"app\\Models\\Modulo.php"
+			]
+		],
+		"width": 0.0
+	},
+	"select_project":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"select_symbol":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"selected_group": 0,
+	"settings":
+	{
+	},
+	"show_minimap": true,
+	"show_open_files": false,
+	"show_tabs": true,
+	"side_bar_visible": true,
+	"side_bar_width": 327.0,
+	"status_bar_visible": true,
+	"template_settings":
+	{
+	}
+}
