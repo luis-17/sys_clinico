@@ -2251,37 +2251,7 @@ angular.module('theme.ventaFarmacia', ['theme.core.services'])
               alert('Algo salió mal...');
             }
             pinesNotifications.notify({ title: pTitle, text: rpta.message, type: pType, delay: 3000 });
-          });
-
-        // }
-        /* esto ya no se considera
-        else{
-          //console.log($scope.fDataVenta);
-          //console.log('DATOS');
-          //return;
-          ventaFarmaciaServices.sRegistrarVentaTemporal($scope.fDataVenta).then(function (rpta) {
-            //console.log($scope.fDataVenta);
-            //return;
-            if(rpta.flag == 1){
-              pTitle = 'OK!';
-              pType = 'success';
-              $scope.isRegisterSuccess = true;
-              $scope.fDataVenta.idventaregister = rpta.idventaregister;
-              $scope.fDataVenta.temporal.producto = null;
-              $scope.fDataVenta.temporal.precio = null;
-              $scope.fDataVenta.temporal.cantidad = null;
-              $scope.fDataVenta.temporal.descuento = null;
-
-            }else if(rpta.flag == 0){
-              var pTitle = 'Advertencia!';
-              var pType = 'warning';
-            }else{
-              alert('Algo salió mal...');
-            }
-            pinesNotifications.notify({ title: pTitle, text: rpta.message, type: pType, delay: 3000 });
-          });
-
-        }*/
+          }); 
       }
       $scope.nuevo = function () {
         $route.reload();

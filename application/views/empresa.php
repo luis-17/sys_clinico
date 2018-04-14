@@ -11,8 +11,10 @@
         <div class="panel-heading"> 
           <h2>
             <ul class="nav nav-tabs">
-              <li class=" {{estilo_tabs.clasetab1}} " ng-show="estilo_tabs.ver_tab1"><a data-target="#home" href="" data-toggle="tab" ng-click="getPaginationTab1ServerSide()">Gestión de Empresas</a></li>
-              <li class=" {{estilo_tabs.clasetab2}} "><a data-target="#tab2" href="" data-toggle="tab" ng-click="getPaginationServerSide()" >Gestión de Empresas EMA</a></li>
+              <li class=" {{estilo_tabs.clasetab1}} " ng-show="estilo_tabs.ver_tab1"><a data-target="#home" href="" data-toggle="tab" ng-click="getPaginationTab1ServerSide()">
+                Gestión de Empresas</a></li>
+              <li class=" {{estilo_tabs.clasetab2}} "><a data-target="#tab2" href="" data-toggle="tab" ng-click="getPaginationServerSide()" >
+                Gestión de Empresas EMA</a></li>
             </ul>
           </h2>
           <div class="panel-ctrls button-icon" data-actions-container="" data-action-collapse='{"target": ".panel-body"}' data-action-colorpicker=''> </div>

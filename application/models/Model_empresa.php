@@ -487,6 +487,7 @@ class Model_empresa extends CI_Model {
 		$this->db->where('emd.idempresaadmin', $datos['idempresa']);
 		$this->db->where('emd.estado_ed', 1);
 		$fData = $this->db->get()->row_array();
+		// print_r($fData); exit();
 		return (empty($fData['contador']) ? FALSE : TRUE );
 	}
 

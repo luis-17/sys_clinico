@@ -515,22 +515,6 @@ angular.module('theme.ordenCompra', ['theme.core.services'])
             setTimeout(function() {
               $('#temporalCantidad').focus().select();
             },500);
-            /*
-            var paramDatos = {
-              idmedicamento: model.id,
-              caja_unidad: $scope.fDataOC.temporal.caja_unidad
-            }
-            ordenCompraServices.sListarUltimoPrecioMedicamento(paramDatos).then(function(rpta) {
-              //console.log('Datos: ',rpta.datos);
-              $scope.fDataOC.temporal.precio = rpta.datos;
-              setTimeout(function() {
-                $('#temporalPrecio').focus();
-              },500);
-              //$scope.fDataOC.temporal.importe = parseFloat($scope.fDataOC.temporal.precio) * $scope.fDataOC.temporal.cantidad * (1 - $scope.fDataOC.temporal.descuento / 100);
-              if($scope.fDataOC.temporal.precio != null){
-                $scope.calcularImporte();
-              }
-            });*/
           }
           $scope.limpiarProducto = function(){
             if($scope.fDataOC.temporal.producto){
@@ -783,7 +767,6 @@ angular.module('theme.ordenCompra', ['theme.core.services'])
               pinesNotifications.notify({ title: 'Advertencia.', text: 'No se ha agregado ningún producto/medicamento', type: 'warning', delay: 3000 }); 
               return false; 
             }
-            //console.log('fDataOC: ', $scope.fDataOC);
             blockUI.start('Ejecutando proceso...');
             ordenCompraServices.sRegistrarOrdenCompra($scope.fDataOC).then(function (rpta) { 
               blockUI.stop();
@@ -792,18 +775,11 @@ angular.module('theme.ordenCompra', ['theme.core.services'])
                 pType = 'success'; 
                 $scope.isRegisterSuccess = true;
                 $scope.idmovimiento = rpta.idmovimiento;
-                // $scope.fDataOC = {};
-                // $scope.fDataOC.temporal.producto = null;
-                // $scope.fDataOC.temporal.precio = null;
-                // $scope.fDataOC.temporal.cantidad = null;
-
                 $scope.getPaginationServerSide();
                 $scope.getPaginationPCServerSide();
-                //$modalInstance.dismiss('cancel');
               }else if(rpta.flag == 0){
                 var pTitle = 'Advertencia!';
                 var pType = 'warning';
-                //$scope.fDataOC.fecha_vencimiento = null;
               }else{
                 alert('Algo salió mal...');
               }
