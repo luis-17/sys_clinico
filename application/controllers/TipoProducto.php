@@ -7,7 +7,7 @@ class TipoProducto extends CI_Controller {
 	{
 		parent::__construct();
 		// $this->load->helper(array('security'));
-		$this->load->model(array('model_tipo_Producto'));
+		$this->load->model(array('model_tipo_producto'));
 		//cache
 		$this->output->set_header("Cache-Control: no-store, no-cache, must-revalidate, no-transform, max-age=0, post-check=0, pre-check=0");
 		$this->output->set_header("Pragma: no-cache");
@@ -19,9 +19,9 @@ class TipoProducto extends CI_Controller {
 	{
 		$allInputs = json_decode(trim($this->input->raw_input_stream),true);
 		if( isset($allInputs['modulo']) ){
-			$lista = $this->model_tipo_Producto->m_cargar_tipoproducto_cbo($allInputs);
+			$lista = $this->model_tipo_producto->m_cargar_tipoproducto_cbo($allInputs);
 		}else{
-			$lista = $this->model_tipo_Producto->m_cargar_tipoproducto_cbo();
+			$lista = $this->model_tipo_producto->m_cargar_tipoproducto_cbo();
 		}
 		$arrListado = array();
 		foreach ($lista as $row) {
@@ -47,8 +47,8 @@ class TipoProducto extends CI_Controller {
 		$allInputs = json_decode(trim(file_get_contents('php://input')),true);
 		$paramPaginate = $allInputs['paginate'];
 
-		$lista = $this->model_tipo_Producto->m_cargar_tipoProducto($paramPaginate);
-		$totalRows = $this->model_tipo_Producto->m_count_tipoProducto();
+		$lista = $this->model_tipo_producto->m_cargar_tipoProducto($paramPaginate);
+		$totalRows = $this->model_tipo_producto->m_count_tipoProducto();
 		$arrListado = array();
 		foreach ($lista as $row) {
 			if( $row['estado_tp'] == 1 ){
@@ -117,7 +117,7 @@ class TipoProducto extends CI_Controller {
 		$allInputs = json_decode(trim($this->input->raw_input_stream),true);
 		$arrData['message'] = 'Error al registrar los datos, inténtelo nuevamente';
     	$arrData['flag'] = 0;
-		if($this->model_tipo_Producto->m_registrar($allInputs)){
+		if($this->model_tipo_producto->m_registrar($allInputs)){
 			$arrData['message'] = 'Se registraron los datos correctamente';
     		$arrData['flag'] = 1;
 		}
@@ -130,7 +130,7 @@ class TipoProducto extends CI_Controller {
 		$allInputs = json_decode(trim($this->input->raw_input_stream),true);
 		$arrData['message'] = 'Error al editar los datos, inténtelo nuevamente';
     	$arrData['flag'] = 0;
-		if($this->model_tipo_Producto->m_editar($allInputs)){
+		if($this->model_tipo_producto->m_editar($allInputs)){
 			$arrData['message'] = 'Se editaron los datos correctamente';
     		$arrData['flag'] = 1;
 		}
@@ -145,7 +145,7 @@ class TipoProducto extends CI_Controller {
 		$arrData['message'] = 'No se pudieron anular los datos';
     	$arrData['flag'] = 0;
     	foreach ($allInputs as $row) {
-			if( $this->model_tipo_Producto->m_anular($row['id']) ){
+			if( $this->model_tipo_producto->m_anular($row['id']) ){
 				$arrData['message'] = 'Se anularon los datos correctamente';
 	    		$arrData['flag'] = 1;
 			}
@@ -161,7 +161,7 @@ class TipoProducto extends CI_Controller {
 		$arrData['message'] = 'No se pudo habilitar los datos';
     	$arrData['flag'] = 0;
     	foreach ($allInputs as $row) {
-			if( $this->model_tipo_Producto->m_habilitar($row['id']) ){
+			if( $this->model_tipo_producto->m_habilitar($row['id']) ){
 				$arrData['message'] = 'Se habilitaron los datos correctamente';
 	    		$arrData['flag'] = 1;
 			}
@@ -177,7 +177,7 @@ class TipoProducto extends CI_Controller {
 		$arrData['message'] = 'No se pudo deshabilitar los datos';
     	$arrData['flag'] = 0;
     	foreach ($allInputs as $row) {
-			if( $this->model_tipo_Producto->m_deshabilitar($row['id']) ){
+			if( $this->model_tipo_producto->m_deshabilitar($row['id']) ){
 				$arrData['message'] = 'Se deshabilitaron los datos correctamente';
 	    		$arrData['flag'] = 1;
 			}
