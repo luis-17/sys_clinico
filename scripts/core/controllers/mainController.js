@@ -64,6 +64,7 @@ appRoot = angular.module('theme.core.main_controller', ['theme.core.services', '
     $scope.fSessionCI.listaNotificaciones = {};
 
     $scope.arrMain.sea = {};
+    $scope.arrMain.bgImageLogin = 'assets/img/bg/bg-1.jpg'; 
     //$scope.listaEspecialidadesSession = [];
     $scope.localLang = {
       selectAll       : "Seleccione todo",
@@ -242,6 +243,7 @@ appRoot = angular.module('theme.core.main_controller', ['theme.core.services', '
         $scope.listaModulos = {};
         $scope.logOut();
         $scope.goToUrl('/login');
+        $scope.arrMain.bgImageLogin = 'assets/img/bg/bg-1.jpg';
       });
     } 
     

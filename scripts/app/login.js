@@ -15,7 +15,8 @@ angular.module('theme.login', ['theme.core.services'])
           $scope.fAlert.msg= response.message;
           $scope.fAlert.strStrong = 'OK.';
           $scope.getValidateSession();
-          $scope.logIn();
+          $scope.logIn(); 
+          $scope.arrMain.bgImageLogin = '';
           // $scope.getNotificaciones();
         }else if( response.flag == 0 ){ // NO PUDO INICIAR SESION 
           $scope.fAlert.type= 'danger';
