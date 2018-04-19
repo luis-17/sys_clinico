@@ -203,7 +203,7 @@
                 <div class="row"> 
                   <div class="col-sm-12 text-right"> 
                     <button class="btn-primary btn pull-left" ng-click="goToUrl('/historial-citas'); $event.preventDefault();" > <i class="fa fa-eye"> </i> [F7] Ver Citas </button> 
-                    <button class="btn-primary btn" ng-click="verificaUsuario(); $event.preventDefault();" ng-disabled="formVenta.$invalid && !isRegisterSuccess"> <i class="fa fa-save"> </i> [F2] Grabar </button>
+                    <button class="btn-primary btn" ng-click="grabar(); $event.preventDefault();" ng-disabled="formVenta.$invalid && !isRegisterSuccess"> <i class="fa fa-save"> </i> [F2] Grabar </button>
                     <button class="btn-default btn" ng-click="nuevo(); $event.preventDefault();" > <i class="fa fa-file"> </i> [F3] Nuevo </button>
                     <button class="btn-success btn" ng-click="imprimir(); $event.preventDefault();" ng-disabled="!isRegisterSuccess"> <i class="fa fa-print"> </i> [F4] Imprimir </button>
                     <button class="btn-warning btn" ng-click="mismoCliente(); $event.preventDefault();" > <i class="fa fa-file"> </i> [F6] Mismo Cliente </button>

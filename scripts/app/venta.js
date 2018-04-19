@@ -70,7 +70,7 @@ angular.module('theme.venta', ['theme.core.services'])
         $scope.fDataVenta.cliente = {};
         $scope.fDataVenta.cliente.actualizado = false;
         $scope.fDataVenta.idventaregister = null;
-        $scope.fDataVenta.pacienteExterno = false; 
+        $scope.fDataVenta.pacienteExterno = true; 
         $scope.fDataVenta.aleasDocumento = 'TICKET';
         $scope.fDataVenta.ticket = '[ ............... ]';
         $scope.fDataVenta.temporal = {
