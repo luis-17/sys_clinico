@@ -50,7 +50,7 @@ angular.module('theme.cajaActual', ['theme.core.services'])
         if(rptaDet.flag === 1){
           $scope.listaCajaMaster = rptaDet.datos;
         }
-        if( rptaDet.flag === 1 && angular.isObject(rptaDet.cajaactual) ){ 
+        if( /*rptaDet.flag === 1 &&*/ angular.isObject(rptaDet.cajaactual) ){ 
           $scope.fBusqueda.cajamaster = rptaDet.cajaactual.idcajamaster; 
           $scope.getPaginationServerSide(); // ventas 
           $scope.getPaginationVAServerSide(); // anuladas
